@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Add Product - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+                       <!-- DataTables -->
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                <style>
+                    .dataTables_filter{
+                        display:block !important;
+                    }
+                </style> 
+    </head>
+
+    <body data-sidebar="colored">
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            	 
+		<div class="vertical-menu">
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <div class="components-nav">
+                        <li class="menu-title">MENUS</li>
+                        <li class="forms-nav">
+                            <a href="reports.html" class="waves-effect active">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="index.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Add Bill</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_doctor.html" class="waves-effect">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span>Add Doctors</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_test.html" class="waves-effect">
+                                <i class="fa-solid fa-vial-circle-check"></i>
+                                <span>Add Tests</span>
+                            </a>
+                        </li>
+                    </div>
+                    </ul>                    
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">						
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Reports</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                    <div id="patient_details" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Name</h4>
+                                        <div id="patientName" data-id=""></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">phone Number</h4>
+                                        <div id="patientMobile"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">age</h4>
+                                        <div id="patientAge"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Address</h4>
+                                        <div id="patientAddress"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Gender</h4>
+                                        <div id="patientGender"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Treatment Date</h4>
+                                        <div id="treatDate"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">                                        
+                                        <div class="row text-center">
+                                            <h4 class="col-lg-2 card-title">Doctor</h4>
+                                            <h4 class="col-lg-2 card-title">Test</h4>                                                
+                                            <h4 class="col-lg-2 card-title">Result</h4>
+                                            <h4 class="col-lg-2 card-title">Units</h4>
+                                            <h4 class="col-lg-2 card-title">Normal</h4>
+                                        </div>
+                                        <div class="row text-center" id="patientTests">                                                
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">                                        
+                                <input type="button" value="submit" class="btn btn-primary" onclick="SinglePatient()">
+                                <input type="hidden" value="" id="hiddenTestsData">
+                                                    
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                    </div>
+
+                        <div class="row" id="reports-table">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="needs-validation" id="formid" novalidate>
+                                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap payment-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead>
+                                                <tr>
+                                                    <th>Patient Name</th>                                                
+                                                    <!-- <th>Phone</th> -->
+                                                    <th>Age</th>
+                                                    <th>Gender</th>                                                
+                                                    <th>Treatment Date</th>                                         
+                                                    <th>Created Date</th>                                         
+                                                    <th>Action</th>                                         
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>          
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <script>
+	
+    $(document).ready(function () {
+    $('#datatable-buttons').DataTable({
+        ajax: 'https://geekytechops.000webhostapp.com/connection.php',
+            columns: [
+            { data: 'name' },
+            // { data: 'phone' },
+            { data: 'age' },
+            { data: 'gender' },
+            { data: 'treat_date' },
+            { data: 'created_date' },
+            { data: 'action_btn' },
+        ],
+    });
+});
+var testDatas=[];
+testDatas[1]={'testname':'Haemoglobin','price':'10000','units':'gms%','normal':'11.5 - 16.0'};
+testDatas[2]={'testname':'Total WBC Count','price':'10000','units':'cells/cmm','normal':'4,000 -10,000'};
+testDatas[3]={'testname':'Platelet Count','price':'10000','units':'Lakhs','normal':'1.5 to 4.0'};
+
+function patientFetch(id){
+    $.ajax({
+        type:'post',
+        url:'https://geekytechops.000webhostapp.com/connection.php',
+        data:{formName:'single_patient_data',patientId:id},
+        success:function(data){
+            $('#patient_details').show();
+            $('#reports-table').hide();            
+            $('#patientName').html(data.split('||')[0]);
+            // $('#patientMobile').html(data.split('||')[1]);
+            $('#patientAge').html(data.split('||')[2]);
+            $('#patientAddress').html(data.split('||')[4]);
+            $('#patientGender').html(data.split('||')[3]);            
+            $('#treatDate').html(data.split('||')[5]);
+            $('#patientName').attr('data-id',data.split('||')[6]);
+            $('#patientTests').html('');
+            $('#hiddenTestsData').val(data.split('||')[7]);
+
+            var testData=JSON.parse(data.split('||')[7]);            
+
+            for(i=0;i<testData.length;i++){                                
+                $('#patientTests').append('<div class="col-lg-2">'+testData[i]["docName"]+'</div><div class="col-lg-2">'+testDatas[testData[i]["testName"]]['testname']+'</div><div class="col-lg-2"><input type="text" class="form-control" id="result_'+i+'" data-id="'+testData[i]["testPrimId"]+'"></div><div class="col-lg-2">'+testDatas[testData[i]["testName"]]['units']+'</div><div class="col-lg-2">'+testDatas[testData[i]["testName"]]['normal']+'</div>')
+            }                        
+        }
+    })
+}
+var testPrints='';
+
+function SinglePatient(){
+        var patientName=  $("#patientName").html().trim();
+        var age=  $("#patientAge").html().trim();
+        var phoneNumber=  $("#patientMobile").html().trim();
+        var address=  $("#patientAddress").html().trim();
+        var gender=  $("#patientGender").html().trim();
+        var date=  $("#treatDate").html().trim();
+
+
+        var testsDatas=JSON.parse($('#hiddenTestsData').val());
+        var count=0;
+        var primId=[];
+        var results=[];
+        testsDatas.map(function(tests){
+
+                testPrints+='<tr>';
+
+                    var testName= tests["testName"];
+                    var doctorName= tests["docName"];
+                    var amount= tests["price"];
+                    var result=$('#result_'+count).val();                
+                    results.push(result);              
+                    primId.push(tests["testPrimId"]);                    
+
+                testPrints+='<td style="background-color: #fff;text-align:center;">'+testName+'</td><td style="background-color: #fff;text-align:center;">'+doctorName+'</td><td style="background-color: #fff;text-align:center;">'+amount+'</td><td style="background-color: #fff;text-align:center;">'+result+'</td>';
+
+                testPrints+='</tr>';
+                count++;
+        })    
+
+        var details={results,primId};
+
+
+        $.ajax({
+            type:'post',
+            url:'https://geekytechops.000webhostapp.com/connection.php',
+            data:{formName:'patient_result',details},
+            success:function(data){
+                $('#patient_details').hide();
+                $('#reports-table').show(); 
+
+            var a = window.open('', '', '');
+            a.document.write('<!DOCTYPE html PUBLIC \'-//W3C//DTD XHTML 1.0 Transitional//EN\' \'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\'><html xmlns=\'http://www.w3.org/1999/xhtml\'><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv=\'Content-Type\' content=\'text/html; charset=iso-8859-1\' /><title>Patient Feed</title><style>th{background-color:#999999;-webkit-print-color-adjust: exact; }</style></head><body><table width="950" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #CCC;padding:20px;"><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr><tr><td style="background-color: #fff;text-align:right;"><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Patient Name</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Age</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Phone Number</th> </tr><tr><td style="background-color: #fff;text-align:center;">'+patientName+'</td><td style="background-color: #fff;text-align:center;">'+age+'</td><td style="background-color: #fff;text-align:center;">'+phoneNumber+'</td></tr></table><table><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr></table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Address</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Gender</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Date</th> </tr><tr><td style="background-color: #fff;text-align:center;">'+address+'</td><td style="background-color: #fff;text-align:center;">'+gender+'</td><td style="background-color: #fff;text-align:center;">'+date+'</td></tr></table><table><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr></table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Test</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Doctor</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Amount</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Result</th> </tr>'+testPrints+'</table></tr></td></table></body></html>');
+            a.document.close();
+            a.print();
+
+            }
+        })
+        }
+	</script>
+            <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+
+                    <!-- Required datatable js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>            
+
+        <script src="assets/js/app.js"></script>			
+        <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <script src="assets/js/board.js"></script>
+    </body>
+</html>

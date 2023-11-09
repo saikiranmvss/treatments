@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Patient Feed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+                <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+				<script src="assets/js/jquery.min.js"></script>
+                <style>
+                    .select-prods{
+                        display: none;
+                    }
+                </style>
+    </head>
+
+    <body data-sidebar="colored">
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            
+			 
+			<div class="vertical-menu">                
+
+                <div data-simplebar class="h-100">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <div class="components-nav">
+                            <li class="menu-title">MENUS</li>
+                            <li class="forms-nav">
+                                <a href="reports.html" class="waves-effect">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+                            <li class="forms-nav">
+                                <a href="index.html" class="waves-effect">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    <span>Add Bill</span>
+                                </a>
+                            </li>
+                            <li class="forms-nav">
+                                <a href="bills.html" class="waves-effect">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    <span>Bills</span>
+                                </a>
+                            </li>
+                            <li class="forms-nav">
+                                <a href="add_doctor.html" class="waves-effect">
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                    <span>Add Doctors</span>
+                                </a>
+                            </li>
+                        </div>
+                        </ul>                    
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">							
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Add Bill</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">                                    
+                                    <div class="card-body">
+                                        <form id="formid" class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="patientName">Patient Name</label>
+                                                        <input type="text" class="form-control patientName" maxlength="50" id="patientName" placeholder="Patient Name" value="">
+                                                        <div class="invalid-feedback" id="patientNameError">
+                                                        Please Enter the Patient Name
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="age">Age</label>
+                                                        <input type="text" class="form-control age number-field" id="age" maxlength="3" placeholder="Age" value="" >
+                                                        <div class="invalid-feedback" id="ageError">
+                                                        Please Enter the Age
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 d-none">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                                                        <input type="tel" class="form-control phoneNumber number-field" id="phoneNumber" placeholder="Phone Number" value="6546544654" maxlength="10">
+                                                        <div class="invalid-feedback" id="phoneError">
+                                                        Please Enter the Phone Number
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                        
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form id="formid" class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="address">Address</label>
+                                                        <input type="text" class="form-control address" id="address" placeholder="Address" value="">
+                                                        <div class="invalid-feedback" id="addressError">
+                                                        Please Enter the Address
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="gender">Gender</label>
+														<select name="gender" class="form-control gender" id="gender">
+															<option value="1">Male</option>
+															<option value="2">Female</option>
+															<option value="3">Others</option>
+														</select>                                                        
+                                                        <div class="invalid-feedback" id="genderError">
+                                                        Please Select the Gender
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="date">Date</label>
+                                                        <input type="date" class="form-control date" id="date" placeholder="Date" value="" >
+                                                        <div class="invalid-feedback" id="dateError">
+                                                        Please Enter the Date
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                        
+						<div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">                    	
+											<div class="prdtDiv">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck1" value="1">
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                            Haemoglobin
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck2" value="2">
+                                                        <label class="form-check-label" for="defaultCheck2">
+                                                            Total WBC Count
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck3" value="3">
+                                                        <label class="form-check-label" for="defaultCheck3">
+                                                            Platelet Count
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck4" value="120">
+                                                        <label class="form-check-label" for="defaultCheck4">
+                                                            Complete blood picture
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck5" value="124">
+                                                        <label class="form-check-label" for="defaultCheck5">
+                                                            Semen Analysis
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" value="14" id="defaultCheck6">
+                                                        <label class="form-check-label" for="defaultCheck6">
+                                                            E S R
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" value="15" id="defaultCheck7">
+                                                        <label class="form-check-label" for="defaultCheck7">
+                                                            Blood Group
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck8" value="17">
+                                                        <label class="form-check-label" for="defaultCheck8">
+                                                            Bleeding Time
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck9" value="19">
+                                                        <label class="form-check-label" for="defaultCheck9">
+                                                            HIV
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck10" value="20">
+                                                        <label class="form-check-label" for="defaultCheck10">
+                                                            HBs Ag
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck11" value="21">
+                                                        <label class="form-check-label" for="defaultCheck11">
+                                                            HCV
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck12" value="22">
+                                                        <label class="form-check-label" for="defaultCheck12">
+                                                            VDRL
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck13" value="23">
+                                                        <label class="form-check-label" for="defaultCheck13">
+                                                            TPHA
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck14" value="24">
+                                                        <label class="form-check-label" for="defaultCheck14">
+                                                            Malaria(Rapid)
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck15" value="25">
+                                                        <label class="form-check-label" for="defaultCheck15">
+                                                            Dengue
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck73" value="112">
+                                                        <label class="form-check-label" for="defaultCheck73">
+                                                            PF
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck16" value="62">
+                                                        <label class="form-check-label" for="defaultCheck16">
+                                                            RA Factor
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck17" value="63">
+                                                        <label class="form-check-label" for="defaultCheck17">
+                                                            ASO Titre
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" class="form-check-input" id="defaultCheck18" value="116">
+                                                        <label class="form-check-label" for="defaultCheck18">
+                                                            CRP
+                                                        </label>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck19" value="117">
+                                                            <label class="form-check-label" for="defaultCheck19">
+                                                                Widal
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck20" value="119">
+                                                            <label class="form-check-label" for="defaultCheck20">
+                                                                S.Type "H"
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck21" value="26">
+                                                            <label class="form-check-label" for="defaultCheck21">
+                                                                Random Blood Sugar
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck22" value="27">
+                                                            <label class="form-check-label" for="defaultCheck22">
+                                                                Fasting Blood Sugar
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck23" value="28">
+                                                            <label class="form-check-label" for="defaultCheck23">
+                                                                Post Pandial Blood Sugar
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck24" value="29">
+                                                            <label class="form-check-label" for="defaultCheck24">
+                                                                Blood Urea
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck25" value="30">
+                                                            <label class="form-check-label" for="defaultCheck25">
+                                                                Serum Creatinine
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck26" value="31">
+                                                            <label class="form-check-label" for="defaultCheck26">
+                                                                Total Serum Bilirubin
+                                                            </label>
+                                                        </div>                                                    
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck27" value="34">
+                                                            <label class="form-check-label" for="defaultCheck27">
+                                                                C Reactive Protien
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck28" value="35">
+                                                            <label class="form-check-label" for="defaultCheck28">
+                                                                P T
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck29" value="36">
+                                                            <label class="form-check-label" for="defaultCheck29">
+                                                                APTT
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck30" value="37">
+                                                            <label class="form-check-label" for="defaultCheck30">
+                                                                Uric Acid
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck31" value="38">
+                                                            <label class="form-check-label" for="defaultCheck31">
+                                                                Sodium
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck32" value="41">
+                                                            <label class="form-check-label" for="defaultCheck32">
+                                                                Serum Calcium
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck33" value="42">
+                                                            <label class="form-check-label" for="defaultCheck33">
+                                                                GTT Profile
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck34" value="47">
+                                                            <label class="form-check-label" for="defaultCheck34">
+                                                                Renal Profile
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck35" value="49">
+                                                            <label class="form-check-label" for="defaultCheck35">
+                                                                Liver Profile
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck36" value="58">
+                                                            <label class="form-check-label" for="defaultCheck36">
+                                                                LIPID Profile
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck37" value="109">
+                                                            <label class="form-check-label" for="defaultCheck37">
+                                                                Pregnancy Test
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck38" value="110">
+                                                            <label class="form-check-label" for="defaultCheck38">
+                                                                Urine HCG
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck39" value="99">
+                                                            <label class="form-check-label" for="defaultCheck39">
+                                                                Albumin
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck40" value="107">
+                                                            <label class="form-check-label" for="defaultCheck40">
+                                                                Bile Salts
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck41" value="64">
+                                                            <label class="form-check-label" for="defaultCheck41">
+                                                                FT3 T4 FSH
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck42" value="65">
+                                                            <label class="form-check-label" for="defaultCheck42">
+                                                                T3 T4 TSH
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck43" value="66">
+                                                            <label class="form-check-label" for="defaultCheck43">
+                                                                TSH
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck44" value="67">
+                                                            <label class="form-check-label" for="defaultCheck44">
+                                                                DOUBLE MARKER
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck45" value="68">
+                                                            <label class="form-check-label" for="defaultCheck45">
+                                                                TRIPLE MARKER
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck46" value="69">
+                                                            <label class="form-check-label" for="defaultCheck46">
+                                                                APLAS APL IGM,IGG
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck47" value="70">
+                                                            <label class="form-check-label" for="defaultCheck47">
+                                                                ANTI NUCLEAR ANTIBIDIES
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck48" value="71">
+                                                            <label class="form-check-label" for="defaultCheck48">
+                                                                APPAP ACL IGG,IGM,IGA
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck49" value="72">
+                                                            <label class="form-check-label" for="defaultCheck49">
+                                                                BETA 2 GLYCOPROTIEN
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck50" value="73">
+                                                            <label class="form-check-label" for="defaultCheck50">
+                                                                AMH
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck51" value="74">
+                                                            <label class="form-check-label" for="defaultCheck51">
+                                                                TAURCH 8
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck52" value="76">
+                                                            <label class="form-check-label" for="defaultCheck52">
+                                                                TAURCH 10
+                                                            </label>
+                                                        </div> 
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck53" value="77">
+                                                            <label class="form-check-label" for="defaultCheck53">
+                                                                HBA1C
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck54" value="78">
+                                                            <label class="form-check-label" for="defaultCheck54">
+                                                                FSH
+                                                            </label>
+                                                        </div>  
+                                                    </div>
+
+                                                    <div class="col-md-3">   
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck55" value="79">
+                                                            <label class="form-check-label" for="defaultCheck55">
+                                                                LH
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck56" value="80">
+                                                            <label class="form-check-label" for="defaultCheck56">
+                                                                E2
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck57" value="81">
+                                                            <label class="form-check-label" for="defaultCheck57">
+                                                                INDIRECT COOMBS TEST
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck58" value="82">
+                                                            <label class="form-check-label" for="defaultCheck58">
+                                                                DIRECT COOMBS TEST
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck59" value="83">
+                                                            <label class="form-check-label" for="defaultCheck59">
+                                                                KARYOTYPING
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck60" value="84">
+                                                            <label class="form-check-label" for="defaultCheck60">
+                                                                COUPLE KARYO TYPING
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck61" value="85">
+                                                            <label class="form-check-label" for="defaultCheck61">
+                                                                CA 125
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck62" value="86">
+                                                            <label class="form-check-label" for="defaultCheck62">
+                                                                S PROGESTOROM
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck63" value="87">
+                                                            <label class="form-check-label" for="defaultCheck63">
+                                                                S PROLACTINE
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck64" value="88">
+                                                            <label class="form-check-label" for="defaultCheck64">
+                                                                QUADRIPLE MARKER
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck65" value="89">
+                                                            <label class="form-check-label" for="defaultCheck65">
+                                                                VIT D3
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck66" value="90">
+                                                            <label class="form-check-label" for="defaultCheck66">
+                                                                PERIPHERAL SMEAR
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck67" value="91">
+                                                            <label class="form-check-label" for="defaultCheck67">
+                                                                LIPASE
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck68" value="92">
+                                                            <label class="form-check-label" for="defaultCheck68">
+                                                                C E A
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck69" value="93">
+                                                            <label class="form-check-label" for="defaultCheck69">
+                                                                S ESRTOGEN
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck70" value="94">
+                                                            <label class="form-check-label" for="defaultCheck70">
+                                                                TESTOSTIRONE
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck71" value="95">
+                                                            <label class="form-check-label" for="defaultCheck71">
+                                                                S B12
+                                                            </label>
+                                                        </div>  
+                                                        <div>
+                                                            <input type="checkbox" class="form-check-input" id="defaultCheck72" value="96">
+                                                            <label class="form-check-label" for="defaultCheck72">
+                                                                S FERRITINE
+                                                            </label>
+                                                        </div>  
+                                                    </div>
+
+                                                </div>
+                                                <input type="hidden" value="1" id="select_count">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="doctorName">Doctor Name</label>
+                                                        <select name="doctorName" class="form-control doctorName" id="doctorName">
+                                                        </select>                                                        
+                                                        <div class="invalid-feedback" id="doctorError">
+                                                        Please Select a Doctor
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <div class="row prdtDivChild mt-4" style="display: flex;flex-direction: row;align-items: end;" id="prdtDivChild_0">
+                                                <div class="">
+                                                    <div class="mb-3 select-sec select-prods">
+                                                        <label class="form-label" for="testName">Test Name</label>                                                        
+														<select name="testName" class="testName form-control select2" id="testName_0">
+                                                            <option value="0" price="0">-- select --</option>
+                                                            <optgroup label="Haemotology">
+                                                            <option value="1" price="50">Haemoglobin</option>
+                                                            <option value="2" price="100">Total WBC Count</option>
+                                                            <option value="3" price="100">Platelet Count</option>
+                                                        <optgroup label="Complete blood picture"></optgroup>
+                                                            <option value="120" price="250">Complete blood picture</option>
+                                                        </optgroup>
+                                                        <optgroup label="Semen Analysis"></optgroup>
+                                                            <option value="124" price="500">Semen Analysis</option>                
+                                                        </optgroup>
+                                                            <option value="14" price="50">E S R</option>
+                                                            <option value="15" price="50">Blood Group</option>                                                            
+                                                            <option value="17" price="50">Bleeding Time</option>
+														</optgroup>
+                                                        <optgroup label="Microbiology">                                                            
+                                                            <option value="19" price="200">HIV</option>
+                                                            <option value="20" price="150">HBs Ag</option>
+                                                            <option value="21" price="250">HCV</option>
+                                                            <option value="22" price="50">VDRL</option>
+                                                            <option value="23" price="100">TPHA</option>
+                                                            <option value="24" price="150">Malaria(Rapid)</option>                                                            
+                                                            <option value="112" price="150">PF</option>
+                                                            <option value="25" price="600">Dengue</option>
+                                                            <option value="62" price="150">RA Factor</option>
+                                                            <option value="63" price="150">ASO Titre</option>
+                                                            <option value="116" price="200">CRP</option>
+                                                            <option value="117" price="50">Widal</option>                                                            
+                                                            <option value="119" price="50">S.Type "H"</option> 
+                                                        </optgroup>
+                                                        <optgroup label="Biochemistry">
+                                                            <option value="26" price="50">Random Blood Sugar</option>
+                                                            <option value="27" price="50">Fasting Blood Sugar</option>
+                                                            <option value="28" price="50">Post Pandial Blood Sugar</option>
+                                                            <option value="29" price="100">Blood Urea</option>
+                                                            <option value="30" price="100">Serum Creatinine</option>
+                                                            <option value="31" price="200">Total Serum Bilirubin</option>
+                                                            <option value="34" price="200">C Reactive Protien</option>
+                                                            <option value="35" price="1000">P T</option>
+                                                            <option value="36" price="1000">APTT</option>
+                                                            <option value="37" price="150">Uric Acid</option>
+                                                            <option value="38" price="350">Sodium</option>
+                                                            <option value="41" price="100">Serum Calcium</option>                                                        
+                                                            <option value="42" price="250">GTT Profile</option>
+                                                            <option value="47" price="200">Renal Profile</option>
+                                                            <option value="49" price="450">Liver Profile</option>
+                                                            <option value="58" price="500">LIPID Profile</option>
+                                                        <optgroup label="Urine">                                                        
+                                                            <option value="109" price="60">Pregnancy Test</option>                                                                                                                                                                                    
+                                                            <option value="110" price="60">Urine HCG</option>                                                                                                                                                                                    
+                                                        </optgroup>
+                                                        </optgroup>
+                                                        <optgroup label="Albumine">
+                                                            <option value="99" price="50">Albumin</option>
+                                                        </optgroup>        
+
+                                                        <optgroup label="Bile Salts">
+                                                            <option value="107" price="50">Bile Salts</option>                                                            
+                                                        </optgroup>                                                        
+                                                        <optgroup label="Other Tests">
+                                                            <option value="64" price="550">FT3 T4 FSH</option>
+                                                            <option value="65" price="500">T3 T4 TSH</option>
+                                                            <option value="66" price="400">TSH</option>
+                                                            <option value="67" price="2500">DOUBLE MARKER</option>
+                                                            <option value="68" price="3000">TRIPLE MARKER</option>
+                                                            <option value="69" price="1600">APLAS APL IGM,IGG</option>
+                                                            <option value="70" price="700">ANTI NUCLEAR ANTIBIDIES</option>
+                                                            <option value="71" price="1800">APPAP ACL IGG,IGM,IGA</option>
+                                                            <option value="72" price="1400">BETA 2 GLYCOPROTIEN</option>
+                                                            <option value="73" price="800">B HCG</option>
+                                                            <option value="74" price="1500">AMH</option>
+                                                            <option value="75" price="2300">TAURCH 8</option>
+                                                            <option value="76" price="2500">TAURCH 10</option>
+                                                            <option value="77" price="550">HBA1C</option>
+                                                            <option value="78" price="450">FSH</option>
+                                                            <option value="79" price="450">LH</option>
+                                                            <option value="80" price="550">E2</option>
+                                                            <option value="81" price="800">INDIRECT COOMBS TEST</option>
+                                                            <option value="82" price="700">DIRECT COOMBS TEST</option>
+                                                            <option value="83" price="3000">KARYOTYPING</option>
+                                                            <option value="84" price="6000">COUPLE KARYO TYPING</option>
+                                                            <option value="85" price="1000">CA 125</option>
+                                                            <option value="86" price="550">S PROGESTOROM</option>
+                                                            <option value="87" price="500">S PROLACTINE</option>
+                                                            <option value="88" price="3000">QUADRIPLE MARKER</option>
+                                                            <option value="89" price="1000">VIT D3</option>
+                                                            <option value="90" price="600">PERIPHERAL SMEAR</option>
+                                                            <option value="91" price="1000">LIPASE</option>
+                                                            <option value="92" price="800">C E A</option>
+                                                            <option value="93" price="550">S ESRTOGEN</option>
+                                                            <option value="94" price="550">TESTOSTIRONE</option>
+                                                            <option value="95" price="650">S B12</option>
+                                                            <option value="96" price="500">S FERRITINE</option>
+                                                        </optgroup>
+                                                        </select>
+                                                        <div class="invalid-feedback" id="testError">
+                                                        Please Selct a Test
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 d-none">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="doctorName">Doctor Name</label>
+														<select name="doctorName" class="form-control doctorName" id="doctorName">
+														</select>                                                        
+                                                        <div class="invalid-feedback" id="doctorError">
+                                                        Please Select a Doctor
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 d-none">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="amount">Amount</label>
+                                                        <input type="tel" class="form-control amount number-field" id="amount" placeholder="Amount" value="" readonly>
+                                                        <div class="invalid-feedback" id="amountError">
+                                                        Please Enter the Amount
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <!-- <div class="mb-3">
+                                                        <label class="form-label"></label>
+														<button class="btn btn-danger form-control" onclick="delprdtDiv('0')">Delete Test</button>
+                                                    </div> -->
+                                            	</div>
+                                            </div>
+										</div>
+										<div class="row mb-2" style="display: none;flex-direction: column;align-items: center;">
+											<div class="col-md-12 mb-2" style="text-align:center">
+											<button class="btn btn-secondary" type="button" onclick="addProduct()">Add New Test</button>
+											</div>
+											</div>
+                                </div>
+
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div> 	
+						<div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="row card-body">
+                                        
+
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                                <label class="form-label" for="validationCustom01">Total</label>
+                                                <input type="tel" class="form-control prdtTotal number-field" id="prdtTotal" placeholder="Total" value="" readonly>
+                                                <div class="invalid-feedback" id="prdtTotalError">
+                                                Please Enter the Total
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                            <label class="form-label">Discount</label>
+                                                <div class="input-group">														
+                                                    <div class="input-group">
+                                                        <input type="tel" class="form-control prdtDiscount" id="prdtDiscount"  placeholder="Discount" value="0" oninput="checkTotal()" focusignore='1' readonly>
+                                                        <input type="radio" class="btn-check" name="discount_type" id="discount_type1" autocomplete="off" value="1" onclick="$('#prdtDiscount').removeAttr('readonly');checkTotal()">
+                                                        <label class="btn btn-outline-primary m-0" for="discount_type1" type="button" style="box-shadow:unset;">&#10004;</label>
+                                                        <input type="radio" class="btn-check" checked name="discount_type" id="discount_type2" autocomplete="off"  value="2" onclick="$('#prdtDiscount').val(0);$('#prdtDiscount').attr('readonly','readonly');checkTotal()">
+                                                        <label class="btn btn-outline-primary m-0" for="discount_type2" type="button" style="box-shadow:unset;">&#10006;</label>
+                                                    </div>
+                                                </div>                                                    
+                                                <div class="invalid-feedback prdtDiscountError" id="prdtDiscountError" >
+                                                    Please Enter the Discount
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                                <label class="form-label" for="disAmount">Revised Amount</label>
+                                                <input type="tel" class="form-control disAmount number-field" id="disAmount" placeholder="Total" value="" readonly>
+                                                <div class="invalid-feedback" id="disAmountError">
+                                                Please Enter the Revised Total
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+										<div class="col-md-12" id="success_msg" style="display:none;color: green;font-size: 17px;text-align: center;font-weight: 600;">Submission Successfull</div>   
+                                         <div class="col-md-12"> <button class="btn btn-primary" type="button" onclick="deliveryChallan()">Submit</button><button class="btn btn-secondary" type="button" onclick="history.go(-1)" style="margin-left: 15px;">Back</button></div>
+
+										</div> 
+											</div>
+											</div>
+											</div>
+                                        </form>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+                
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+		<script>
+
+                            $(document).on('click','.form-check-input',function(){                                         
+                                if($(this).is(':checked')){             
+                                    if($('#select_count').val()==1){
+                                        $('.prdtDivChild').eq(0).find('.select2').val($(this).val()).change();
+                                        $('#select_count').val(parseInt($('#select_count').val())+1);
+                                        $('.prdtDivChild').eq(0).attr('data',$(this).val());
+                                        $('.prdtDivChild').eq(0).find('#amount').val($('.prdtDivChild').eq(0).find('.select2').find(':selected').attr('price'));
+                                        checkTotal();
+                                    }else{                                                            
+                                        addProduct();
+                                        var counts=$('.form-check-input:checked').length;
+                                        $('.prdtDivChild').eq(counts-1).find('.select2').val($(this).val()).change();
+                                        $(this).parents('.prdtDivChild').find('#amount').val($(this).find(':selected').attr('price'));
+                                        $('.prdtDivChild').eq(counts-1).attr('data',$(this).val());
+                                        $('.prdtDivChild').eq(counts-1).find('#amount').val($('.prdtDivChild').eq(counts-1).find('.select2').find(':selected').attr('price'));
+                                        checkTotal();
+                                    }    
+                                }else{
+                                    var countsCheck=$('.form-check-input:checked').length;
+                                    if(countsCheck==0){
+                                        $('.prdtDivChild').eq(0).find('.select2').val(0).change();
+                                        $('.prdtDivChild').eq(0).find('.amount').val(0);
+                                        $('#select_count').val(1);
+                                    }else{
+                                        $("div[data="+$(this).val()+"]").remove();
+                                    }                                    
+                                    checkTotal();
+                                }                                                    
+                                })
+
+            function checkTotal(){
+                var total=0;
+                $('.amount').map(function(index){         
+                    total+= parseInt($('.amount').eq(index).val()=='' ? 0 : $('.amount').eq(index).val());
+                })
+                $('#prdtTotal').val(total);
+                $('#disAmount').val(total-$('#prdtDiscount').val());
+            }
+		
+		function delprdtDiv(id){			
+			$("#prdtDivChild_"+id).remove();
+            checkTotal();
+		}
+		
+		var i=1;
+        var selectDoc='';
+		function addProduct(){
+
+            var testOptions=$('#testName_0').html();	
+			var doctorOptions=$('.prdtDiv .prdtDivChild:first-child').find('#doctorName').html();	
+			var doctorName=$('.prdtDiv .prdtDivChild:first-child').find('#doctorName').find(':selected').html();
+			var doctorVal=$('.prdtDiv .prdtDivChild:first-child').find('#doctorName').find(':selected').val();
+            if($('.prdtDivChild').length>=1){
+                doctorOptions='<option value="'+doctorVal+'" selected>'+doctorName+'</option>';
+                var readonly='readonly';
+            }else{
+                var readonly='';
+            }
+            
+				$(".prdtDiv").append('<div class="row prdtDivChild" style="display:none;flex-direction: row;align-items: end;" id="prdtDivChild_'+i+'"><div class="col-md-3"><div class="mb-3 select-sec select-prods"><label class="form-label" for="testName">Test Name</label><select name="testName" class="form-control select2 testName" id="testName_'+i+'">'+testOptions+'</select><div class="invalid-feedback" id="testError">Please Enter the Test Name</div></div></div><div class="col-md-4 d-none"><div class="mb-3"><label class="form-label" for="doctorName">Doctor Name</label><select name="doctorName" class="form-control doctorName" id="doctorName" '+readonly+'>'+doctorOptions+'</select><div class="invalid-feedback" id="doctorError">Please Enter the Doctor Name</div></div></div><div class="col-md-3"><div class="mb-3"><label class="form-label" for="amount">Amount</label><input type="tel" class="form-control amount number-field" id="amount" placeholder="Amount" value="" readonly><div class="invalid-feedback" id="amountError">Please Enter the Amount</div></div></div><div class="col-md-2"><div class="mb-3"><label class="form-label"></label><button class="btn btn-danger form-control" onclick="delprdtDiv('+i+')">Delete Test</button></div></div></div>');
+                select2_start();
+                i++;
+		}
+		
+		var testid='';
+	function deliveryChallan(){
+
+        var patientName=  $(".patientName").val().trim();
+        var age=  $(".age").val().trim();
+        var phoneNumber=  $(".phoneNumber").val().trim();
+        var address=  $(".address").val().trim();
+        var gender=  $(".gender").find(":selected").val();
+        var date=  $(".date").val();
+        var defDoc=$("#doctorName").val()==0 ? '' : $("#doctorName").val() ;
+        var dynamicError=0;
+        var staticError=0;
+        var details={};
+        var tests={};
+        var billtests={};
+        var groupObj={};
+        console.log(defDoc);
+        // console.log($("#doctorName").val());
+
+        if(patientName=='' || age=='' || phoneNumber=='' || phoneNumber.length<10 || address=='' || gender=='' ||  date=='' || defDoc==''){
+
+            if(patientName==''){				
+				$('.patientName').addClass('field-invalid');
+				$('.patientName').removeClass('field-valid');	
+				$('#patientNameError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".patientNameError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.patientName').removeClass('field-invalid');
+				$('.patientName').addClass('field-valid');					
+				$('#patientNameError').hide();
+				$(".patientNameError").attr('style','');
+			}
+            if(age==''){				
+				$('.age').addClass('field-invalid');
+				$('.age').removeClass('field-valid');	
+				$('#ageError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".ageError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.age').removeClass('field-invalid');
+				$('.age').addClass('field-valid');					
+				$('#ageError').hide();
+				$(".ageError").attr('style','');
+			}
+            if(phoneNumber=='' || phoneNumber.length<10){				
+				$('.phoneNumber').addClass('field-invalid');
+				$('.phoneNumber').removeClass('field-valid');	
+				$('#phoneError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".phoneError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.phoneNumber').removeClass('field-invalid');
+				$('.phoneNumber').addClass('field-valid');					
+				$('#phoneError').hide();
+				$(".phoneError").attr('style','');
+			}
+            if(address==''){				
+				$('.address').addClass('field-invalid');
+				$('.address').removeClass('field-valid');	
+				$('#addressError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".addressError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.address').removeClass('field-invalid');
+				$('.address').addClass('field-valid');					
+				$('#addressError').hide();
+				$(".addressError").attr('style','');
+			}
+            // console.log(defDoc);
+            if(defDoc==''){				
+				$('#doctorName').addClass('field-invalid');
+				$('#doctorName').removeClass('field-valid');	
+				$('#doctorError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$("#doctorError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('#doctorName').removeClass('field-invalid');
+				$('#doctorName').addClass('field-valid');					
+				$('#doctorError').hide();
+				$("#doctorError").attr('style','');
+			}
+            if(gender==''){				
+				$('.gender').addClass('field-invalid');
+				$('.gender').removeClass('field-valid');	
+				$('#genderError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".genderError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.gender').removeClass('field-invalid');
+				$('.gender').addClass('field-valid');					
+				$('#genderError').hide();
+				$(".genderError").attr('style','');
+			}
+            if(date==''){				
+				$('.date').addClass('field-invalid');
+				$('.date').removeClass('field-valid');	
+				$('#dateError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".dateError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.date').removeClass('field-invalid');
+				$('.date').addClass('field-valid');					
+				$('#dateError').hide();
+				$(".dateError").attr('style','');
+			}
+
+            staticError=1;
+        }
+        var counts=0
+        var billcounts=0;
+        $('.prdtDiv .prdtDivChild').each(function(index){
+
+            tests[counts]={};
+            billtests[billcounts]={};
+           testid= $(this).find('.testName').find(":selected").val();
+           if(testid=='0'){
+            $(this).find('#testError').show();
+            $(this).find('.testName').addClass('field-invalid');
+            $(this).find('.testName').removeClass('field-valid');
+            alert();
+            dynamicError=1;
+           }else{
+            tests[counts]['testid']=testid;
+            billtests[billcounts]['testid']=testid;
+            $(this).find('.testName').addClass('field-valid');
+            $(this).find('.testName').removeClass('field-invalid');
+            $(this).find('#testError').hide();
+           }
+
+           console.log($(this).find('.doctorName').find(":selected").val());
+           var doctorid= $(this).find('.doctorName').find(":selected").val();
+           if(doctorid=='0'){
+            $(this).find('.doctorError').show();
+            $(this).find('.doctorName').addClass('field-invalid');
+            $(this).find('.doctorName').removeClass('field-valid');        
+            dynamicError=1;
+           }else{
+            tests[counts]['doctorid']=doctorid;
+            billtests[billcounts]['doctorid']=doctorid;
+            $(this).find('.doctorName').addClass('field-valid');
+            $(this).find('.doctorName').removeClass('field-invalid');
+            $(this).find('.doctorError').hide();
+           }
+
+           var amount= $(this).find('#amount').val();
+           if(amount==''){
+            $(this).find('#amountError').show();
+            $(this).find('#amount').addClass('field-invalid');
+            $(this).find('#amount').removeClass('field-valid');
+            dynamicError=1;
+           }else{
+            tests[counts]['amount']=amount;
+            billtests[billcounts]['amount']=amount;
+            $(this).find('#amount').addClass('field-valid');
+            $(this).find('#amount').removeClass('field-invalid');
+            $(this).find('#amountError').hide();
+           }
+
+           var groupedProfiles={}
+           groupedProfiles[49]=['50','51','52','53','54','55','56','57'];
+           groupedProfiles[31]=['32','33'];
+           groupedProfiles[38]=['39','40'];
+           groupedProfiles[42]=['98','43','44','45','46'];
+           groupedProfiles[47]=['48'];
+           groupedProfiles[58]=['59','60','61','97'];
+           groupedProfiles[99]=['106','100','101','102','103','104','105'];
+           groupedProfiles[107]=['108'];
+           groupedProfiles[15]=['16'];
+           groupedProfiles[17]=['18'];
+           groupedProfiles[24]=['111','112'];
+           groupedProfiles[25]=['113','114','115'];
+           groupedProfiles[117]=['118','119'];
+           groupedProfiles[124]=['125','127','126','128','129','130','131','132','133','134','135'];
+           groupedProfiles[120]=['121','122','123','4','5','6','7','8','9','10','11','12','13'];
+        //    groupedProfiles[3]=['4','5','6','7','8','9','10','11','12','13'];
+        //    groupedProfiles[24]=['111','112','25','62','63','116','117'];
+
+
+           if(dynamicError!=1){
+            if(groupedProfiles[testid]!='' && groupedProfiles[testid]!=undefined){                     
+                for(var k=0;k<groupedProfiles[testid].length;k++){                    
+                    counts++;
+                    tests[counts]={};
+                    tests[counts]['testid']=groupedProfiles[testid][k]; 
+                    tests[counts]['doctorid']='0';
+                    tests[counts]['amount']='0';                    
+                }
+                counts++;  
+                billcounts++;     
+            }else{
+                counts++;
+                billcounts++;
+            }
+
+           }
+
+        }) 
+        
+        console.log(tests);
+        var countsCheck=$('.form-check-input:checked').length;    
+        if(countsCheck==0){
+            alert('Select Atleast one Test');   
+            return false; 
+        }else{
+            console.log('dynamicError'+dynamicError);
+            console.log('staticError'+staticError);
+        }
+    if(dynamicError==1 || staticError ==1){ return false; }else{
+
+        details['patientName']=patientName;
+        details['age']=age;
+        details['address']=address;
+        details['phoneNumber']=phoneNumber;
+        details['date']=date;
+        details['gender']=gender;
+        details['totalprice']=$('#disAmount').val();
+        details['tests']=tests;
+        details['billtests']=billtests;
+			$.ajax({
+                url:"https://geekytechops.000webhostapp.com/connection.php",
+                // url:"include/connection.php",
+				type:"POST",
+				data:{details:details,formName:'insertTest'},
+				success: function(response) {
+					Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'New Bill created Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    printDiv();
+                    $( "#container-fluid" ).load(window.location.href + " #container-fluid" );
+				}
+			})
+		
+		}
+	}	
+
+//     $(document).on('#Select2' ,'select2:select', function (e) {
+//   console.log('test');
+// })
+
+
+	$(document).on('focus','input',function(){
+		$(this).closest('.invalid-feedback').hide();
+		$(this).removeClass('.field-invalid');
+	})
+
+    function getTestsDocs(){
+
+        $.ajax({
+				// url:"include/connect.php",
+                // url:"https://close-profile.000webhostapp.com/connection.php",
+                // url:"https://sartorial-police.000webhostapp.com/connection.php",
+                // url:"include/connection.php",
+                url:"https://geekytechops.000webhostapp.com/connection.php",
+				type:"POST",
+				data:{formName:'pageLoad'},
+				success: function(response) {
+
+					// $('#testName').html(response.split('||')[0]);	
+					$('.doctorName').html(response.split('||')[1])	
+				}
+			})
+
+        }
+
+    $(document).ready(function(){
+        getTestsDocs();
+    })
+
+    var testPrints='';
+    var doctorName='';
+    var totalamount=0;
+    var testSideCheck='';
+            var testCheck='';
+            var checkskip=0;
+
+    function printDiv() {
+
+        var patientName=  $(".patientName").val().trim();
+        var age=  $(".age").val().trim();
+        var phoneNumber=  $(".phoneNumber").val().trim();
+        var address=  $(".address").val().trim();
+        var gender=  $(".gender").find(":selected").html();
+        var date=  $(".date").val();
+
+
+        $('.prdtDiv .prdtDivChild').each(function(i){
+
+                testPrints+='<tr>';
+
+                    var testName= $(this).find('.testName').find(":selected").html();
+                    var testVal= $(this).find('.testName').find(":selected").val();
+                    doctorName= $('#doctorName').find(":selected").html();                    
+                    var amount= $(this).find('#amount').val();
+                    totalamount=$('#disAmount').val();
+
+
+                    var sideHeads={};
+
+                    var mainHeads={}
+
+                    mainHeads[42]='Biochemistry';
+                    mainHeads[47]='Biochemistry';
+                    mainHeads[49]='Biochemistry';
+                    mainHeads[58]='Biochemistry';
+                    mainHeads[109]='Biochemistry';
+                    mainHeads[99]='Biochemistry';
+                    mainHeads[107]='Biochemistry';
+                    mainHeads[110]='Biochemistry';
+                    mainHeads[26]='Biochemistry';
+                    mainHeads[27]='Biochemistry';
+                    mainHeads[28]='Biochemistry';
+                    mainHeads[29]='Biochemistry';
+                    mainHeads[30]='Biochemistry';
+                    mainHeads[31]='Biochemistry';
+                    mainHeads[34]='Biochemistry';
+                    mainHeads[37]='Biochemistry';
+                    mainHeads[38]='Biochemistry';
+                    mainHeads[41]='Biochemistry';
+
+                    sideHeads[42]='GTT Profile';
+                    sideHeads[47]='Renal Profile';
+                    sideHeads[49]='Liver Profile';
+                    sideHeads[58]='LIPID Profile';
+                    sideHeads[109]='Urine';
+                    sideHeads[99]='Urine';
+                    sideHeads[107]='Urine';
+                    sideHeads[110]='Urine';
+
+
+                    mainHeads[19]='Microbiology';
+                    mainHeads[20]='Microbiology';
+                    mainHeads[21]='Microbiology';
+                    mainHeads[22]='Microbiology';
+                    mainHeads[23]='Microbiology';
+                    mainHeads[24]='Microbiology';
+                    mainHeads[25]='Microbiology';
+                    mainHeads[62]='Microbiology';
+                    mainHeads[63]='Microbiology';
+                    mainHeads[116]='Microbiology';
+                    mainHeads[117]='Microbiology';
+
+
+                    sideHeads[19]='Serology';
+                    sideHeads[20]='Serology';
+                    sideHeads[21]='Serology';
+                    sideHeads[22]='Serology';
+                    sideHeads[23]='Serology';
+                    sideHeads[24]='Serology';
+                    sideHeads[25]='Serology';
+                    sideHeads[62]='Serology';
+                    sideHeads[63]='Serology';
+                    sideHeads[116]='Serology';
+                    sideHeads[117]='Serology';
+
+
+                    mainHeads[124]='Haemotology';
+                    mainHeads[121]='Haemotology';
+                    mainHeads[122]='Haemotology';
+                    mainHeads[123]='Haemotology';
+                    mainHeads[14]='Haemotology';
+                    mainHeads[15]='Haemotology';
+                    mainHeads[17]='Haemotology';
+                    mainHeads[1]='Haemotology';
+                    mainHeads[2]='Haemotology';
+                    mainHeads[3]='Haemotology';
+                    mainHeads[120]='Haemotology';
+
+
+                    sideHeads[1]='Haemoglobin';
+                    sideHeads[2]='Total WBC Count';
+                    sideHeads[3]='Platelet Count';
+                    sideHeads[124]='Semen Analysis';
+                    sideHeads[121]='Complete blood picture';
+                    sideHeads[122]='Complete blood picture';
+                    sideHeads[123]='Complete blood picture';
+                    var newTablesHeads='';
+
+                    if(mainHeads[testVal]!='' && mainHeads[testVal]!=undefined){                    
+                        if(testSideCheck!=mainHeads[testVal]){                                                
+                            var newhead='<div class="col-lg-12 mb-2 '+mainHeads[testVal]+'" ><b style="color:red;"><u style="font-size: 25px;letter-spacing: 0.2px;">'+mainHeads[testVal]+'</u></b></div>';     
+                            var newTableHead='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>'+mainHeads[testVal]+'</p></u></div></td></tr><tr>';   
+                            if(sideHeads[testVal]!='' && sideHeads[testVal]!=undefined ){
+                                var newDiv=newhead+'';  
+                                var newTablesHeads=newTableHead+'';                          
+                                testCheck=sideHeads[testVal];
+                            }else{
+                                var newDiv=newhead;
+                                var newTablesHeads=newTableHead;
+                            }
+                        testSideCheck=mainHeads[testVal];
+                        }else{                                                               
+                                if(sideHeads[testVal]!='' && sideHeads[testVal]!=undefined ){
+                                    if(testCheck!=sideHeads[testVal]){
+                                        var newDiv='';
+                                        var newTablesHeads='';
+                                        testCheck=sideHeads[testVal];
+                                    }else{
+                                        var newDiv='';
+                                        var newTablesHeads='';
+                                    }
+                                }else{
+                                    var newDiv='';
+                                    var newTablesHeads='';
+                                }
+                                
+                        }
+                    }
+                    else{
+                        var newDiv='';
+                    }
+
+                
+                testPrints+=newTablesHeads+'<tr><td style="background-color: #fff;text-align:left;">'+testName+'</td><td style="background-color: #fff;text-align:left;">'+amount+'</td>';
+
+
+                testPrints+='</tr>';
+
+        })
+
+            var a = window.open('', '', '');
+            a.document.write('');
+            // a.document.write('<!DOCTYPE html PUBLIC \'-//W3C//DTD XHTML 1.0 Transitional//EN\' \'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\'><html xmlns=\'http://www.w3.org/1999/xhtml\'><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv=\'Content-Type\' content=\'text/html; charset=iso-8859-1\' /><title>Patient Feed</title><style>th{background-color:#999999;-webkit-print-color-adjust: exact; }.tiles-div{display: flex;align-items: baseline;}.tile1{width: 80%;padding-left: 3rem}.tile2{width: 20%;padding-left: 16rem; }.main-tile{display: flex;flex-direction: row;border: 1.5px solid;line-height: 0.2;width: 100%;}</style></head><body><table width="950" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:20px;"><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr><tr><td style="background-color: #fff;text-align:right;"><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><div class="main-tile"><div class="tile1"><div class="tiles-div"><strong>Name &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</strong><p>'+patientName+'</p></div><div class="tiles-div"><strong>Address :&nbsp;</strong><p>'+address+'</p></div><div class="tiles-div"><strong>Ref Dr. &nbsp;&nbsp;: &nbsp;</strong><p>'+doctorName+'</p></div></div><div class="tile2"><div class="tiles-div"><strong>Age &nbsp;&nbsp;:&nbsp;&nbsp; </strong><p>'+age+'</p></div><div class="tiles-div"><strong>Sex &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;</strong><p>'+gender+'</p></div><div class="tiles-div"><strong>Date &nbsp;:&nbsp;&nbsp; </strong><p>'+date+'</p></div></div></div>  </tr></table><table><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr></table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"</table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Test</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Amount</th></tr>'+testPrints+'</table><table width="100%" cellpadding="15" cellspacing="0"><td align="right" style="font-size: 17px;">Total Amount: ₹'+totalamount+'</td></table></tr></td></table></body></html>');
+
+            a.document.write('<!DOCTYPE html PUBLIC \'-//W3C//DTD XHTML 1.0 Transitional//EN\' \'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\'><html xmlns=\'http://www.w3.org/1999/xhtml\'><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv=\'Content-Type\' content=\'text/html; charset=iso-8859-1\' /><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><title>Patient Feed</title><style>@page { margin-top: 120px; }table p{ margin:10px;font-size:17px; } th{background-color:#999999;-webkit-print-color-adjust: exact; }u{ text-transform: uppercase;font-size: 18px;letter-spacing: -0.9px;font-weight: 700;text-decoration: unset;color: #27434b;}.tiles-div{display: flex;align-items: baseline;}.tile1{width: 70%;padding-left: 3rem}.tile2{width: 30%;padding-left: 4rem; }.main-tile{display: flex;align-items:center;flex-direction: row;border: 1.5px solid;line-height: 0.2;width: 100%;}* { font-family: \'Roboto\', sans-serif; }</style></head><body><table width="900" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:20px;"><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr><tr><td style="background-color: #fff;text-align:right;"><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><div class="main-tile"><div class="tile1"><div class="tiles-div"><strong>Name &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</strong><p>'+patientName+'</p></div><div class="tiles-div"><strong>Address :&nbsp;</strong><p style="line-height:1;text-align:left;width:74%">'+address+'</p></div><div class="tiles-div"><strong>Ref Dr. &nbsp;&nbsp;: &nbsp;</strong><p>'+doctorName+'</p></div></div><div class="tile2"><div class="tiles-div"><strong>Age &nbsp;&nbsp;:&nbsp;&nbsp; </strong><p>'+age+'</p></div><div class="tiles-div"><strong>Sex &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;</strong><p>'+gender+'</p></div><div class="tiles-div"><strong>Date &nbsp;:&nbsp;&nbsp; </strong><p>'+date+'</p></div></div></div>  </tr></table><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="30%" align="left"  style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Test</th><th width="10%" align="left" style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Price</th></tr>'+testPrints+'</table><table width="100%" cellpadding="15" cellspacing="0"><td align="right" style="font-size: 17px;">Total Amount: ₹'+totalamount+'</td></table></tr></td></table></body></html>');   
+            a.document.close();
+            a.print();
+        }
+	</script>
+	        <!-- JAVASCRIPT -->
+			<script src="assets/libs/jquery/jquery.min.js"></script>
+			<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- <script src="assets/libs/select2/js/select2.min.js"></script> -->
+			<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+			<script src="assets/js/app.js"></script>
+            <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <!-- <script src="assets/js/pages/form-advanced.init.js"></script> -->
+			<script src="assets/js/board.js"></script>
+            <script>
+                function select2_start(){                
+                    if($('.testName').length>0){         
+                    }
+                }        
+        
+        $('.prdtDiv .doctorName').eq(0).on('change',function(){   
+            // alert($('.doctorName').eq(0).find(':selected').html());         
+            $('.doctorName').map(function(index){                
+                if(index!=0){
+                    $('.doctorName').eq(index).val($('.doctorName').eq(0).find(':selected').val()).change();
+                }                
+            })
+        })
+        $('#patientName').on('input',function(){
+            $(this).val($(this).val().replace(/[^\sa-zA-Z]/ig,''));
+        })
+            </script>
+    </body>
+</html>

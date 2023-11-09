@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Add Product - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    </head>
+
+    <body data-sidebar="colored">
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            	 
+			<div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <div class="components-nav">
+                        <li class="menu-title">MENUS</li>
+                        <li class="forms-nav">
+                            <a href="reports.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="index.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Add Bill</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_doctor.html" class="waves-effect">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span>Add Doctors</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_test.html" class="waves-effect active">
+                                <i class="fa-solid fa-vial-circle-check"></i>
+                                <span>Add Tests</span>
+                            </a>
+                        </li>
+                    </div>
+                    </ul>                    
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">						
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Add Tests</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="needs-validation" id="formid" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="testName">Test Name</label>
+                                                        <input type="text" class="form-control testName" id="testName" placeholder="Test Name" value="" >
+                                                        <div class="invalid-feedback" id="testNameError">
+                                                        Please Enter the Name
+                                                        </div>
+                                                    </div>
+                                                </div>     
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="amount">Amount</label>
+                                                        <input type="text" class="form-control amount" id="amount" placeholder="Amount" value="" >
+                                                        <div class="invalid-feedback" id="amountError">
+                                                        Please Enter the Amount
+                                                        </div>
+                                                    </div>
+                                                </div>     
+                                            </div>                                          
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <div class="col-md-12" id="success_msg" style="display:none;color: green;font-size: 17px;text-align: center;font-weight: 600;">Submission Successfull</div>                                    
+                                                            <button class="btn btn-primary w-5" type="button" onclick="adproduct()">Submit</button>
+                                                        </div>
+                                                    </div>  
+                                                </div>  
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <script>
+	function adproduct(){
+	
+		var testName = $(".testName").val().trim();
+		var amount = $(".amount").val().trim();
+		var formName="add_test";
+		
+		if(testName==''){
+			if(testName==''){
+				$('.testName').addClass('field-invalid');
+				$('.testName').removeClass('field-valid');
+				$('#testNameError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".testNameError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.testName').removeClass('field-invalid');
+				$('.testName').addClass('field-valid');
+				$('#testNameError').hide();
+				$(".testNameError").attr('style','');
+			}
+			if(amount==''){
+				$('.amount').addClass('field-invalid');
+				$('.amount').removeClass('field-valid');
+				$('#amountError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".amountError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.amount').removeClass('field-invalid');
+				$('.amount').addClass('field-valid');
+				$('#amountError').hide();
+				$(".amountError").attr('style','');
+			}
+			return false;
+		}else{
+			$.ajax({
+                // url:"include/connect.php",
+                // url:"https://close-profile.000webhostapp.com/connection.php",
+                url:"https://sartorial-police.000webhostapp.com/connection.php",
+				type:"POST",
+				data:{testName:testName,amount:amount,formName:formName},
+				success: function(response) {
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'New Doctor added Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    $( "#container-fluid" ).load(window.location.href + " #container-fluid" );
+				}
+			})
+		}
+	}
+	</script>
+	        <!-- JAVASCRIPT -->
+			<script src="assets/libs/jquery/jquery.min.js"></script>
+			<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+			<script src="assets/js/app.js"></script>
+            <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+			<script src="assets/js/board.js"></script>
+    </body>
+</html>

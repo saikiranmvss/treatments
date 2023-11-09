@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Patient Feed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+                <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet">
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    </head>
+
+    <body data-sidebar="colored">
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+            <button type="button" class="menu-swipe btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+                <i class="ri-menu-2-line align-middle"></i>
+            </button>
+
+            
+			 
+			<div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <div class="components-nav">
+                            <li class="menu-title">MENUS</li>
+                            <li class="forms-nav">
+                                <a href="reports.html" class="waves-effect">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+                            <li class="forms-nav">
+                                <a href="index.html" class="waves-effect">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    <span>Add Bill</span>
+                                </a>
+                            </li>
+                            <li class="forms-nav">
+                                <a href="add_doctor.html" class="waves-effect">
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                    <span>Add Doctors</span>
+                                </a>
+                            </li>
+                            <!-- <li class="forms-nav">
+                                <a href="add_test.html" class="waves-effect">
+                                    <i class="fa-solid fa-vial-circle-check"></i>
+                                    <span>Add Tests</span>
+                                </a>
+                            </li> -->
+                        </div>
+                        </ul>                    
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">							
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Add Bill</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form id="formid" class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="patientName">Patient Name</label>
+                                                        <input type="text" class="form-control patientName" id="patientName" placeholder="Patient Name" value="">
+                                                        <div class="invalid-feedback" id="patientNameError">
+                                                        Please Enter the Patient Name
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="age">Age</label>
+                                                        <input type="text" class="form-control age number-field" id="age" placeholder="Age" value="" >
+                                                        <div class="invalid-feedback" id="ageError">
+                                                        Please Enter the Age
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                                                        <input type="tel" class="form-control phoneNumber number-field" id="phoneNumber" placeholder="Phone Number" value="" maxlength="10">
+                                                        <div class="invalid-feedback" id="phoneError">
+                                                        Please Enter the Phone Number
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                        
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form id="formid" class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="address">Address</label>
+                                                        <input type="text" class="form-control address" id="address" placeholder="Address" value="">
+                                                        <div class="invalid-feedback" id="addressError">
+                                                        Please Enter the Address
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="gender">Gender</label>
+														<select name="gender" class="form-control gender" id="gender">
+															<option value="1">Male</option>
+															<option value="2">Female</option>
+															<option value="3">Others</option>
+														</select>                                                        
+                                                        <div class="invalid-feedback" id="genderError">
+                                                        Please Select the Gender
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="date">Date</label>
+                                                        <input type="date" class="form-control date" id="date" placeholder="Date" value="" >
+                                                        <div class="invalid-feedback" id="dateError">
+                                                        Please Enter the Date
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+										</div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                        
+						<div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">                    	
+											<div class="prdtDiv">
+                                            <div class="row prdtDivChild" style="display: flex;flex-direction: row;align-items: center;" id="prdtDivChild_0">
+                                                <div class="col-md-3">
+                                                    <div class="mb-3 select-sec select-prods">
+                                                        <label class="form-label" for="testName">Test Name</label>                                                        
+														<select name="testName" class="form-control select2" id="testName">
+                                                            <option value="0" price="0">-- select --</option>
+                                                            <optgroup label="Pathology">
+                                                            <option value="1" price="1000">Haemoglobin</option>
+                                                            <option value="2" price="2000">Total WBC Count</option>
+                                                            <option value="3" price="3000">Platelet Count</option>
+														</optgroup>
+                                                        </select>
+                                                        <div class="invalid-feedback" id="testError">
+                                                        Please Selct a Test
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="doctorName">Doctor Name</label>
+														<select name="doctorName" class="form-control" id="doctorName">
+														</select>                                                        
+                                                        <div class="invalid-feedback" id="doctorError">
+                                                        Please Select a Doctor
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="amount">Amount</label>
+                                                        <input type="tel" class="form-control amount number-field" id="amount" placeholder="Amount" value="" readonly>
+                                                        <div class="invalid-feedback" id="amountError">
+                                                        Please Enter the Amount
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label class="form-label"></label>
+														<button class="btn btn-danger form-control" onclick="delprdtDiv('0')">Delete Test</button>
+                                                    </div>
+                                            	</div>
+                                            </div>
+										</div>
+										<div class="row mb-2" style="display: flex;flex-direction: column;align-items: center;">
+											<div class="col-md-12 mb-2" style="text-align:center">
+											<button class="btn btn-secondary" type="button" onclick="addProduct()">Add New Test</button>
+											</div>
+											</div>
+                                </div>
+
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div> 	
+						<div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="row card-body">
+                                        
+
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                                <label class="form-label" for="validationCustom01">Total</label>
+                                                <input type="tel" class="form-control prdtTotal number-field" id="prdtTotal" placeholder="Total" value="" readonly>
+                                                <div class="invalid-feedback" id="prdtTotalError">
+                                                Please Enter the Total
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                            <label class="form-label">Discount</label>
+                                                <div class="input-group">														
+                                                    <div class="input-group">
+                                                        <input type="tel" class="form-control prdtDiscount" id="prdtDiscount"  placeholder="Discount" value="0" oninput="checkTotal()" focusignore='1' readonly>
+                                                        <input type="radio" class="btn-check" name="discount_type" id="discount_type1" autocomplete="off" value="1" onclick="$('#prdtDiscount').removeAttr('readonly')">
+                                                        <label class="btn btn-outline-primary m-0" for="discount_type1" type="button" style="box-shadow:unset;">&#10004;</label>
+                                                        <input type="radio" class="btn-check" checked name="discount_type" id="discount_type2" autocomplete="off"  value="2" onclick="$('#prdtDiscount').val(0);$('#prdtDiscount').attr('readonly','readonly')">
+                                                        <label class="btn btn-outline-primary m-0" for="discount_type2" type="button" style="box-shadow:unset;">&#10006;</label>
+                                                    </div>
+                                                </div>                                                    
+                                                <div class="invalid-feedback prdtDiscountError" id="prdtDiscountError" >
+                                                    Please Enter the Discount
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="mb-4">
+                                                <label class="form-label" for="disAmount">Revised Amount</label>
+                                                <input type="tel" class="form-control disAmount number-field" id="disAmount" placeholder="Total" value="" readonly>
+                                                <div class="invalid-feedback" id="disAmountError">
+                                                Please Enter the Revised Total
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+										<div class="col-md-12" id="success_msg" style="display:none;color: green;font-size: 17px;text-align: center;font-weight: 600;">Submission Successfull</div>   
+                                         <div class="col-md-12"> <button class="btn btn-primary" type="button" onclick="deliveryChallan()">Submit</button><button class="btn btn-secondary" type="button" onclick="history.go(-1)" style="margin-left: 15px;">Back</button></div>
+
+										</div> 
+											</div>
+											</div>
+											</div>
+                                        </form>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+                
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+		<script>
+
+            function checkTotal(){
+                var total=0;
+                $('.amount').map(function(index){
+                    console.log(index);
+                    total+= parseInt($('.amount').eq(index).val());
+                })
+                $('#prdtTotal').val(total);
+                $('#disAmount').val(total-$('#prdtDiscount').val());
+            }
+
+    // $(document).on('change' , '#testName' , function(){
+    //     $(this).parents('.prdtDivChild').find('#amount').val($(this).find(':selected').attr('price'));
+    //     checkTotal();
+    // })
+		
+		function delprdtDiv(id){			
+			$("#prdtDivChild_"+id).remove();
+            checkTotal();
+		}
+		
+		var i=1;
+		function addProduct(){
+
+            var testOptions=$('.prdtDiv .prdtDivChild:first-child').find('#testName').html();	
+			var doctorOptions=$('.prdtDiv .prdtDivChild:first-child').find('#doctorName').html();	
+
+				$(".prdtDiv").append('<div class="row prdtDivChild" style="display: flex;flex-direction: row;align-items: center;" id="prdtDivChild_'+i+'"><div class="col-md-3"><div class="mb-3 select-sec select-prods"><label class="form-label" for="testName">Test Name</label><select name="testName" class="form-control" id="testName">'+testOptions+'</select><div class="invalid-feedback" id="testError">Please Enter the Test Name</div></div></div><div class="col-md-4"><div class="mb-3"><label class="form-label" for="doctorName">Doctor Name</label><select name="doctorName" class="form-control" id="doctorName">'+doctorOptions+'</select><div class="invalid-feedback" id="doctorError">Please Enter the Doctor Name</div></div></div><div class="col-md-3"><div class="mb-3"><label class="form-label" for="amount">Amount</label><input type="tel" class="form-control amount number-field" id="amount" placeholder="Amount" value="" readonly><div class="invalid-feedback" id="amountError">Please Enter the Amount</div></div></div><div class="col-md-2"><div class="mb-3"><label class="form-label"></label><button class="btn btn-danger form-control" onclick="delprdtDiv('+i+')">Delete Test</button></div></div></div>');
+				i++;
+		}
+		
+		
+	function deliveryChallan(){
+
+        var patientName=  $(".patientName").val().trim();
+        var age=  $(".age").val().trim();
+        var phoneNumber=  $(".phoneNumber").val().trim();
+        var address=  $(".address").val().trim();
+        var gender=  $(".gender").find(":selected").val();
+        var date=  $(".date").val().trim();
+        var dynamicError=0;
+        var staticError=0;
+        var details={};
+        var tests={};
+
+        if(patientName=='' || age=='' || phoneNumber=='' || phoneNumber.length<10 || address=='' || gender=='' ||  date==''){
+
+            if(patientName==''){				
+				$('.patientName').addClass('field-invalid');
+				$('.patientName').removeClass('field-valid');	
+				$('#patientNameError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".patientNameError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.patientName').removeClass('field-invalid');
+				$('.patientName').addClass('field-valid');					
+				$('#patientNameError').hide();
+				$(".patientNameError").attr('style','');
+			}
+            if(age==''){				
+				$('.age').addClass('field-invalid');
+				$('.age').removeClass('field-valid');	
+				$('#ageError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".ageError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.age').removeClass('field-invalid');
+				$('.age').addClass('field-valid');					
+				$('#ageError').hide();
+				$(".ageError").attr('style','');
+			}
+            if(phoneNumber=='' || phoneNumber.length<10){				
+				$('.phoneNumber').addClass('field-invalid');
+				$('.phoneNumber').removeClass('field-valid');	
+				$('#phoneError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".phoneError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.phoneNumber').removeClass('field-invalid');
+				$('.phoneNumber').addClass('field-valid');					
+				$('#phoneError').hide();
+				$(".phoneError").attr('style','');
+			}
+            if(address==''){				
+				$('.address').addClass('field-invalid');
+				$('.address').removeClass('field-valid');	
+				$('#addressError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".addressError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.address').removeClass('field-invalid');
+				$('.address').addClass('field-valid');					
+				$('#addressError').hide();
+				$(".addressError").attr('style','');
+			}
+            if(gender==''){				
+				$('.gender').addClass('field-invalid');
+				$('.gender').removeClass('field-valid');	
+				$('#genderError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".genderError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.gender').removeClass('field-invalid');
+				$('.gender').addClass('field-valid');					
+				$('#genderError').hide();
+				$(".genderError").attr('style','');
+			}
+            if(date==''){				
+				$('.date').addClass('field-invalid');
+				$('.date').removeClass('field-valid');	
+				$('#dateError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".dateError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.date').removeClass('field-invalid');
+				$('.date').addClass('field-valid');					
+				$('#dateError').hide();
+				$(".dateError").attr('style','');
+			}
+
+            staticError=1;
+        }
+        
+        $('.prdtDiv .prdtDivChild').each(function(index){
+
+            tests[index]={};
+           var testid= $(this).find('#testName').find(":selected").val();
+           if(testid=='0'){
+            $(this).find('#testError').show();
+            $(this).find('#testName').addClass('field-invalid');
+            $(this).find('#testName').removeClass('field-valid');
+            dynamicError=1;
+           }else{
+            tests[index]['testid']=testid;
+            $(this).find('#testName').addClass('field-valid');
+            $(this).find('#testName').removeClass('field-invalid');
+            $(this).find('#testError').hide();
+           }
+
+           var doctorid= $(this).find('#doctorName').find(":selected").val();
+           if(doctorid=='0'){
+            $(this).find('#doctorError').show();
+            $(this).find('#doctorName').addClass('field-invalid');
+            $(this).find('#doctorName').removeClass('field-valid');
+            dynamicError=1;
+           }else{
+            tests[index]['doctorid']=doctorid;
+            $(this).find('#doctorName').addClass('field-valid');
+            $(this).find('#doctorName').removeClass('field-invalid');
+            $(this).find('#doctorError').hide();
+           }
+
+           var amount= $(this).find('#amount').val();
+           if(amount==''){
+            $(this).find('#amountError').show();
+            $(this).find('#amount').addClass('field-invalid');
+            $(this).find('#amount').removeClass('field-valid');
+            dynamicError=1;
+           }else{
+            tests[index]['amount']=amount;
+            $(this).find('#amount').addClass('field-valid');
+            $(this).find('#amount').removeClass('field-invalid');
+            $(this).find('#amountError').hide();
+           }
+
+        })
+    if(dynamicError==1 || staticError ==1){ return false }else{
+
+        details['patientName']=patientName;
+        details['age']=age;
+        details['address']=address;
+        details['phoneNumber']=phoneNumber;
+        details['date']=date;
+        details['gender']=gender;
+        details['totalprice']=$('#disAmount').val();
+        details['tests']=tests;
+			$.ajax({
+				// url:"include/connect.php",
+                // url:"https://close-profile.000webhostapp.com/connection.php",
+                url:"https://sartorial-police.000webhostapp.com/connection.php",
+				type:"POST",
+				data:{details:details,formName:'insertTest'},
+				success: function(response) {
+					Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'New Bill created Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    printDiv();
+                    $( "#container-fluid" ).load(window.location.href + " #container-fluid" );
+				}
+			})
+		
+		}
+	}	
+
+//   $('#testName').on('select2:select', function (e) {
+//     var data = e.params.data;
+//     console.log(data);
+// });
+
+
+	$(document).on('focus','input',function(){
+		$(this).closest('.invalid-feedback').hide();
+		$(this).removeClass('.field-invalid');
+	})
+
+    function getTestsDocs(){
+
+        $.ajax({
+				// url:"include/connect.php",
+                // url:"https://close-profile.000webhostapp.com/connection.php",
+                url:"https://sartorial-police.000webhostapp.com/connection.php",
+				type:"POST",
+				data:{formName:'pageLoad'},
+				success: function(response) {
+
+					// $('#testName').html(response.split('||')[0]);	
+					$('#doctorName').html(response.split('||')[1])	
+				}
+			})
+
+        }
+
+    $(document).ready(function(){
+        getTestsDocs();
+    })
+
+    var testPrints='';
+
+    function printDiv() {
+
+        var patientName=  $(".patientName").val().trim();
+        var age=  $(".age").val().trim();
+        var phoneNumber=  $(".phoneNumber").val().trim();
+        var address=  $(".address").val().trim();
+        var gender=  $(".gender").find(":selected").val();
+        var date=  $(".date").val().trim();
+        var totalAmount=$('#disAmount').val();
+
+
+        $('.prdtDiv .prdtDivChild').each(function(index){
+
+                testPrints+='<tr>';
+
+                    var testName= $(this).find('#testName').find(":selected").html();
+                    var doctorName= $(this).find('#doctorName').find(":selected").html();
+                    var amount= $(this).find('#amount').val();
+
+                testPrints+='<td style="background-color: #fff;text-align:center;">'+testName+'</td><td style="background-color: #fff;text-align:center;">'+doctorName+'</td><td style="background-color: #fff;text-align:center;">'+amount+'</td>';
+
+
+                testPrints+='</tr>';
+
+        })
+
+            var a = window.open('', '', '');
+            a.document.write('<!DOCTYPE html PUBLIC \'-//W3C//DTD XHTML 1.0 Transitional//EN\' \'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\'><html xmlns=\'http://www.w3.org/1999/xhtml\'><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv=\'Content-Type\' content=\'text/html; charset=iso-8859-1\' /><title>Patient Feed</title><style>th{background-color:#999999;-webkit-print-color-adjust: exact; }</style></head><body><table width="950" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #CCC;padding:20px;"><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr><tr><td style="background-color: #fff;text-align:right;"><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Patient Name</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Age</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Phone Number</th> </tr><tr><td style="background-color: #fff;text-align:center;">'+patientName+'</td><td style="background-color: #fff;text-align:center;">'+age+'</td><td style="background-color: #fff;text-align:center;">'+phoneNumber+'</td></tr></table><table><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr></table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Address</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Gender</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Date</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Total Amount</th> </tr><tr><td style="background-color: #fff;text-align:center;">'+address+'</td><td style="background-color: #fff;text-align:center;">'+gender+'</td><td style="background-color: #fff;text-align:center;">'+date+'</td><td style="background-color: #fff;text-align:center;">'+totalAmount+'</td></tr></table><table><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr></table><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Test</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Doctor</th><th width="20%" align="center" bgcolor="#D8D8D8" style="font-family:Arial, Helvetica, sans-serif;font-size:16px;color:#000;">Amount</th>tr>'+testPrints+'</table></tr></td></table></body></html>');
+            a.document.close();
+            a.print();
+        }
+
+</script>
+	        <!-- JAVASCRIPT -->
+			<script src="assets/libs/jquery/jquery.min.js"></script>
+			<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="assets/libs/select2/js/select2.min.js"></script>
+			<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+			<script src="assets/js/app.js"></script>
+            <script src="assets/js/pages/form-advanced.init.js"></script>
+            <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+			<script src="assets/js/board.js"></script>
+            <script>
+                $("#testName").select2("destroy").select2().on("select2:select", function (e) {                    
+                    $('#amount').val($(this).find(':selected').attr('price'));
+                    checkTotal();
+                });
+            </script>
+    </body>
+</html>

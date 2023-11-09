@@ -1,0 +1,1761 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Add Product - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+                       <!-- DataTables -->
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                <style>
+                    .dataTables_filter{
+                        display:block !important;
+                    }
+                    #patientTests u{
+                        text-transform: uppercase;
+                        font-size: 18px;
+                        letter-spacing: -0.9px;
+                        font-weight: 700;
+                        text-decoration: unset;
+                        color: #27434b;
+                    }
+                    .GTT u{
+                        color:green !important;
+                    }
+                    .Renal u{
+                        color:rgb(0, 108, 122) !important;
+                    }
+                    .Liver u{
+                        color:rgb(0, 66, 165) !important;
+                    }
+                    .LIPID u{
+                        color:rgb(191, 204, 3) !important;
+                    }
+                    .Urine u{
+                        color:rgb(177, 0, 0) !important;
+                    }
+                    .Serology u{
+                        color:rgb(177, 0, 0) !important;
+                    }
+                    .Complete u{
+                        color:rgb(177, 0, 0) !important;
+                    }
+                    .Semen u{
+                        color:green !important;
+                    }
+                    
+                    /* div b.Haemotology:nth-child(2){
+                        display:none;
+                        }                         */
+                </style> 
+    </head>
+
+    <body data-sidebar="colored">
+        <button type="button" class="menu-swipe btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+            <i class="ri-menu-2-line align-middle"></i>
+        </button>
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            	 
+		<div class="vertical-menu">
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <div class="components-nav">
+                        <li class="menu-title">MENUS</li>
+                        <li class="forms-nav">
+                            <a href="reports.html" class="waves-effect active">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="index.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Add Bill</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="bills.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Bills</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_doctor.html" class="waves-effect">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span>Add Doctors</span>
+                            </a>
+                        </li>
+                        <!-- <li class="forms-nav">
+                            <a href="add_test.html" class="waves-effect">
+                                <i class="fa-solid fa-vial-circle-check"></i>
+                                <span>Add Tests</span>
+                            </a>
+                        </li> -->
+                    </div>
+                    </ul>                    
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">						
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Reports</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                    <div id="patient_details" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Name</h4>
+                                        <div id="patientName" data-id=""></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Doctor Name</h4>
+                                        <div id="docName"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">age</h4>
+                                        <div id="patientAge"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Address</h4>
+                                        <div id="patientAddress"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Gender</h4>
+                                        <div id="patientGender"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Report Date</h4>
+                                        <div id="treatDate"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">      
+                                        <form autocomplete="off">
+                                        <div class="row text-center">
+                                            <!-- <h4 class="col-lg-3 card-title">Doctor</h4> -->
+                                            <h4 class="col-lg-3 card-title">Test</h4>                                                
+                                            <h4 class="col-lg-3 card-title">Result</h4>
+                                            <h4 class="col-lg-3 card-title">Units</h4>
+                                            <h4 class="col-lg-3 card-title">Normal</h4>
+                                        </div>
+                                        <div class="row text-center" id="patientTests">                                                
+                                        </div>
+                                    </form>                                  
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">                                        
+                                <input type="button" value="submit" class="btn btn-primary" onclick="SinglePatient()">
+                                <input type="hidden" value="" id="hiddenTestsData">
+                                <input type="hidden" value="" id="hiddenResultData">
+                                                    
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>  
+
+                    </div>
+
+                        <div class="row" id="reports-table">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="needs-validation" id="formid" novalidate>
+                                            <table id="datatable-buttons" data-order="[[ 4, &quot;desc&quot; ]]" class="table table-striped table-bordered dt-responsive nowrap payment-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead>
+                                                <tr>
+                                                    <th>Patient Name</th>                                                
+                                                    <!-- <th>Phone</th> -->
+                                                    <th>Age</th>
+                                                    <th>Gender</th>                                                
+                                                    <th>Treatment Date</th>                                         
+                                                    <th>Created Date</th>                                         
+                                                    <th>Action</th>                                         
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>          
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <script>
+	
+    $(document).ready(function () {
+    $('#datatable-buttons').DataTable({
+        ajax: 'https://geekytechops.000webhostapp.com/connection.php',
+            columns: [
+            { data: 'name' },
+            // { data: 'phone' },
+            { data: 'age' },
+            { data: 'gender' },
+            { data: 'treat_date' },
+            { data: 'created_date' },
+            { data: 'action_btn' },
+        ],
+    });
+});
+var testDatas=[];
+testDatas[1]={'testname':'Haemoglobin','price':'50','units':'gms%','normal':'11.5 - 16.0'};
+testDatas[2]={'testname':'Total WBC Count','price':'100','units':'cells/cmm','normal':'4,000 -10,000'};
+testDatas[3]={'testname':'Platelet Count','price':'100','units':'Lakhs','normal':'1.5 to 4.0'};
+
+testDatas[120]={'testname':'','price':'250','units':'','normal':''};
+testDatas[121]={'testname':'Haemoglobin','price':'50','units':'gms%','normal':'11.5 - 16.0'};
+testDatas[122]={'testname':'Total WBC Count','price':'100','units':'cells/cmm','normal':'4,000 -10,000'};
+testDatas[123]={'testname':'Platelet Count','price':'100','units':'Lakhs','normal':'1.5 to 4.0'};
+
+testDatas[124]={'testname':'','price':'500','units':'','normal':''};
+testDatas[125]={'testname':'Appearence','price':'500','units':'','normal':''};
+testDatas[127]={'testname':'LIQ Time','price':'500','units':'hours','normal':''};
+testDatas[126]={'testname':'PH','price':'500','units':'','normal':''};
+testDatas[128]={'testname':'Volume','price':'500','units':'ml','normal':''};
+testDatas[129]={'testname':'Total Count','price':'500','units':'millions','normal':''};
+testDatas[130]={'testname':'Rapid Progressive','price':'500','units':'%','normal':''};
+testDatas[131]={'testname':'Sluggishly Progressive','price':'500','units':'%','normal':''};
+testDatas[132]={'testname':'Non Progressive','price':'500','units':'%','normal':''};
+testDatas[133]={'testname':'immortality','price':'500','units':'%','normal':''};
+testDatas[134]={'testname':'Micro','price':'500','units':'','normal':''};
+testDatas[135]={'testname':'Others','price':'500','units':'','normal':''};
+
+
+
+testDatas[4]={'testname':'Neutrophils','price':'10000','units':'%','normal':'60% to 70%'};
+testDatas[5]={'testname':'Lymphocytes','price':'10000','units':'%','normal':'20% to 40%'};
+testDatas[6]={'testname':'Monocytes','price':'10000','units':'%','normal':'1% to 6%'};
+testDatas[7]={'testname':'Eosinophils','price':'10000','units':'%','normal':'1% to 6%'};
+testDatas[8]={'testname':'Basophils','price':'10000','units':'%','normal':'1% to 2%'};
+testDatas[9]={'testname':'Total RBC Count','price':'10000','units':'Mi/cmm','normal':'4.0 to 5.5'};
+testDatas[10]={'testname':'HCT','price':'10000','units':'%','normal':'30% to 46%'};
+testDatas[11]={'testname':'MCV','price':'10000','units':'fL','normal':'81 to 100fL'};
+testDatas[12]={'testname':'MCH','price':'10000','units':'pg','normal':'26 to 34pg'};
+testDatas[13]={'testname':'MCHC','price':'10000','units':'g/dL','normal':'31% to 36%'};
+testDatas[14]={'testname':'E S R','price':'50','units':'mm/hr','normal':'2 to 8mm'};
+testDatas[15]={'testname':'Blood Group','price':'50','units':' ','normal':'-'};
+testDatas[16]={'testname':'Rh Type','price':'10000','units':' ','normal':'-'};
+testDatas[17]={'testname':'Bleeding Time','price':'50','units':'sec','normal':'1 to 4min'};
+testDatas[18]={'testname':'Clotting Time','price':'10000','units':'sec','normal':'3 to 7min'};
+
+// microbiology
+
+testDatas[19]={'testname':'HIV','price':'200','units':' ','normal':'Negative'};
+testDatas[20]={'testname':'HBs Ag','price':'150','units':' ','normal':'Negative'};
+testDatas[21]={'testname':'HCV','price':'250','units':' ','normal':'Negative'};
+testDatas[22]={'testname':'VDRL','price':'50','units':' ','normal':'Non-Reactive'};
+testDatas[23]={'testname':'TPHA','price':'100','units':' ','normal':'Negative'};
+testDatas[24]={'testname':'Malaria(Rapid)','price':'150','units':' ','normal':'Negative'};
+
+testDatas[111]={'testname':'PV','price':'150','units':' ','normal':'Negative'};
+testDatas[112]={'testname':'PF','price':'150','units':' ','normal':'Negative'};
+
+testDatas[25]={'testname':'Dengue','price':'600','units':' ','normal':'Negative'};
+
+testDatas[113]={'testname':'NS1 Ag','price':'600','units':' ','normal':'Negative'};
+testDatas[114]={'testname':'lgG','price':'600','units':' ','normal':'Negative'};
+testDatas[115]={'testname':'lgM','price':'600','units':' ','normal':'Negative'};
+
+testDatas[116]={'testname':'CRP','price':'200','units':' ','normal':'Negative'};
+
+testDatas[117]={'testname':'Widal','price':'50','units':' ','normal':'Negative'};
+testDatas[118]={'testname':'S.Type "O"','price':'50','units':'dilution','normal':''};
+testDatas[119]={'testname':'S.Type "H"','price':'50','units':'dilution','normal':''};
+
+
+
+testDatas[62]={'testname':'RA Factor','price':'150','units':' ','normal':'Negative'};
+testDatas[63]={'testname':'ASO Titre','price':'150','units':' ','normal':'Negative'};
+
+
+//Biochemistry
+
+testDatas[26]={'testname':'Random Blood Sugar','price':'50','units':'mg/dl','normal':'70 to 140'};
+testDatas[27]={'testname':'Fasting Blood Sugar','price':'50','units':'mg/dl','normal':'70 to 110'};
+testDatas[28]={'testname':'Post Pandial Blood Sugar','price':'50','units':'mg/dl','normal':'70 to 180'};
+testDatas[29]={'testname':'Blood Urea','price':'100','units':'mg/dl','normal':'15 to 40'};
+testDatas[30]={'testname':'Serum Creatinine','price':'100','units':'mg/dl','normal':'0.6 to 1.4'};
+testDatas[31]={'testname':'Total Serum Bilirubin','price':'200','units':'mg/dl','normal':'0.2 to 1.0'};
+testDatas[32]={'testname':'Direct Bilirubin','price':'10000','units':'mg/dl','normal':'0.1 to 0.4'};
+testDatas[33]={'testname':'Indirect Bilirubin','price':'10000','units':'mg/dl','normal':'0.1 to 0.6'};
+testDatas[34]={'testname':'C Reactive Protien','price':'200','units':'mg/dl','normal':'<6'};
+testDatas[35]={'testname':'P T','price':'10000','units':'sec','normal':'10 to 13'};
+testDatas[36]={'testname':'APTT','price':'10000','units':'sec','normal':'25 to 36'};
+testDatas[37]={'testname':'Uric Acid','price':'150','units':'mg/dl','normal':'2.4 to 6.0'};
+testDatas[38]={'testname':'Sodium','price':'350','units':'mmoI/L','normal':'136 to 146'};
+testDatas[39]={'testname':'Potassium','price':'10000','units':'mmoI/L','normal':'3.5 to 4.5'};
+testDatas[40]={'testname':'Chloride','price':'10000','units':'mmoI/L','normal':'96 to 106'};
+testDatas[41]={'testname':'Serum Calcium','price':'100','units':'mg/dl','normal':'8.5 to 11.0'};
+
+testDatas[136]={'testname':'GTT Profile','price':'250','units':'','normal':''};
+testDatas[42]={'testname':'Fasting Blood Sugar','price':'250','units':'mg/dl','normal':'70 to 110'};
+testDatas[98]={'testname':'After Given glucose','price':'-','units':'gms','normal':'-'}
+testDatas[43]={'testname':'Half an Hour Blood Sugar','price':'10000','units':'mg/dl','normal':'70 to 140'};
+testDatas[44]={'testname':'One Hour Blood Sugar','price':'10000','units':'mg/dl','normal':'70 to 140'};
+testDatas[45]={'testname':'One and Half an Hour Blood Sugar','price':'10000','units':'mg/dl','normal':'70 to 180'};
+testDatas[46]={'testname':'Two Hours Blood Sugar','price':'10000','units':'mg/dl','normal':'70 to 160'};
+
+testDatas[47]={'testname':'Blood Urea','price':'200','units':'mg/dl','normal':'15 to 40'};
+testDatas[48]={'testname':'Serum Creatinine','price':'10000','units':'mg/dl','normal':'0.6 to 1.4'};
+testDatas[49]={'testname':'Total Serum Bilirubin','price':'450','units':'mg/dl','normal':'0.2 to 1.0'};
+testDatas[50]={'testname':'Direct Bilirubin','price':'10000','units':'mg/dl','normal':'0.1 to 0.4'};
+testDatas[51]={'testname':'Indirect Bilirubin','price':'10000','units':'mg/dl','normal':'0.1 to 0.6'};
+testDatas[52]={'testname':'SGOT','price':'10000','units':'IU/L','normal':'15 to 37'};
+testDatas[53]={'testname':'SGPT','price':'10000','units':'IU/L','normal':'15 to 37'};
+testDatas[54]={'testname':'Alkaline Phosphates','price':'10000','units':'IU/L','normal':'50 to 136'};
+testDatas[55]={'testname':'Total Protiens','price':'10000','units':'g/dl','normal':'6.4 to 8.2'};
+testDatas[56]={'testname':'Albumin','price':'10000','units':'g/dl','normal':'3.5 to 5.0'};
+testDatas[57]={'testname':'Globulin','price':'10000','units':'g/dl','normal':'1.8 to 3.6'};
+testDatas[58]={'testname':'Total Cholesterol','price':'10000','units':'mg/dl','normal':'< 200'};
+testDatas[59]={'testname':'Triglycerides','price':'10000','units':'mg/dl','normal':'< 150'};
+testDatas[60]={'testname':'HDL Cholesterol','price':'10000','units':'mg/dl','normal':'40 to 60'};
+testDatas[61]={'testname':'LDL Cholesterol','price':'10000','units':'mg/dl','normal':'< 100'};
+testDatas[97]={'testname':'VLDL Cholesterol','price':'10000','units':'mg/dl','normal':'15 to 40'};
+testDatas[99]={'testname':'Albumin','price':'50','units':' ','normal':'-'}
+testDatas[100]={'testname':'Appearence','price':'50','units':' ','normal':'-'}
+testDatas[101]={'testname':'Pus Cells','price':'50','units':'seen/HPF','normal':'-'}
+testDatas[102]={'testname':'R B C','price':'50','units':'seen/HPF','normal':'-'}
+testDatas[103]={'testname':'Epithileals','price':'50','units':'seen/HPF','normal':'-'}
+testDatas[104]={'testname':'Crystels','price':'50','units':'seen/HPF','normal':'-'}
+testDatas[105]={'testname':'Others','price':'50','units':' ','normal':'-'}
+testDatas[106]={'testname':'Sugar','price':'50','units':' ','normal':'-'}
+testDatas[107]={'testname':'Bile Salts','price':'50','units':' ','normal':'-'}
+testDatas[108]={'testname':'Bile Pigments ','price':'50','units':' ','normal':'-'}
+testDatas[109]={'testname':'Pregnancy Test ','price':'60','units':' ','normal':'Negative'}
+testDatas[110]={'testname':'Urine HCG','price':'60','units':' ','normal':'Non-Reactive'}
+
+
+// outside tests list
+
+
+testDatas[64]={'testname':'FT3 T4 FSH','price':'550','units':' ','normal':'-'};
+testDatas[65]={'testname':'T3 T4 TSH','price':'500','units':' ','normal':'-'};
+testDatas[66]={'testname':'TSH','price':'400','units':' ','normal':'-'};
+testDatas[67]={'testname':'DOUBLE MARKER','price':'2500','units':' ','normal':'-'};
+testDatas[68]={'testname':'TRIPLE MARKER','price':'3000','units':' ','normal':'-'};
+testDatas[69]={'testname':'APLAS APL IGM,IGG','price':'1600','units':' ','normal':'-'};
+testDatas[70]={'testname':'ANTI NUCLEAR ANTIBIDIES','price':'700','units':' ','normal':'-'};
+testDatas[71]={'testname':'APPAP ACL IGG,IGM,IGA','price':'1800','units':' ','normal':'-'};
+testDatas[72]={'testname':'BETA 2 GLYCOPROTIEN','price':'1400','units':' ','normal':'-'};
+testDatas[73]={'testname':'B HCG','price':'800','units':' ','normal':'-'};
+testDatas[74]={'testname':'AMH','price':'1500','units':' ','normal':'-'};
+testDatas[75]={'testname':'TAURCH 8','price':'2300','units':' ','normal':'-'};
+testDatas[76]={'testname':'TAURCH 10','price':'2500','units':' ','normal':'-'};
+testDatas[77]={'testname':'HBA1C','price':'550','units':' ','normal':'-'};
+testDatas[78]={'testname':'FSH','price':'450','units':' ','normal':'-'};
+testDatas[79]={'testname':'LH','price':'450','units':' ','normal':'-'};
+testDatas[80]={'testname':'E2','price':'550','units':' ','normal':'-'};
+testDatas[81]={'testname':'INDIRECT COOMBS TEST','price':'800','units':' ','normal':'-'};
+testDatas[82]={'testname':'DIRECT COOMBS TEST','price':'700','units':' ','normal':'-'};
+testDatas[83]={'testname':'KARYOTYPING','price':'3000','units':' ','normal':'-'}
+testDatas[84]={'testname':'COUPLE KARYO TYPING','price':'6000','units':' ','normal':'-'}
+testDatas[85]={'testname':'CA 125','price':'1000','units':' ','normal':'-'}
+testDatas[86]={'testname':'S PROGESTOROM','price':'550','units':' ','normal':'-'}
+testDatas[87]={'testname':'S PROLACTINE','price':'500','units':' ','normal':'-'}
+testDatas[88]={'testname':'QUADRIPLE MARKER','price':'3000','units':' ','normal':'-'}
+testDatas[89]={'testname':'VIT D3','price':'1000','units':' ','normal':'-'}
+testDatas[90]={'testname':'PERIPHERAL SMEAR','price':'600','units':' ','normal':'-'}
+testDatas[91]={'testname':'LIPASE','price':'1000','units':' ','normal':'-'}
+testDatas[92]={'testname':'C E A','price':'800','units':' ','normal':'-'}
+testDatas[93]={'testname':'S ESRTOGEN','price':'550','units':' ','normal':'-'}
+testDatas[94]={'testname':'TESTOSTIRONE','price':'550','units':' ','normal':'-'}
+testDatas[95]={'testname':'S B12','price':'650','units':' ','normal':'-'}
+testDatas[96]={'testname':'S FERRITINE','price':'500','units':' ','normal':'-'}
+
+
+
+
+var keyupfun='';
+function patientFetch(id){
+    $.ajax({
+        type:'post',
+        url:'https://geekytechops.000webhostapp.com/connection.php',
+        data:{formName:'single_patient_data',patientId:id},
+        success:function(data){
+            $('#patient_details').show();
+            $('#reports-table').hide();            
+            $('#patientName').html(data.split('||')[0]);
+            // $('#patientMobile').html(data.split('||')[1]);            
+            $('#patientAge').html(data.split('||')[2]);
+            $('#patientAddress').html(data.split('||')[1]);
+            $('#patientGender').html(data.split('||')[3]);            
+            $('#treatDate').html(data.split('||')[4]);
+            $('#patientName').attr('data-id',data.split('||')[6]);
+            $('#patientTests').html('');
+            $('#hiddenTestsData').val(data.split('||')[7]);
+            // $('#hiddenResultData').val(data.split('||')[8]);
+
+            var testData=JSON.parse(data.split('||')[7]);
+            
+            var docNames=testData[0]["docName"];
+            $('#docName').html(docNames);
+            var testSideCheck='';
+            var testCheck='';
+            var checkskip=0;
+
+            for(i=0;i<testData.length;i++){        
+                                
+                if(testData[i]["testName"]==1){
+                    keyupfun='onkeyup=\'($(this).val() < 11.5 ) || ($(this).val() > 16 ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==121){
+                    keyupfun='onkeyup=\'($(this).val() < 11.5 ) || ($(this).val() > 16 ) ? this.style.color="red" : this.style.color="black"\'';               
+                }                
+                else if(testData[i]["testName"]==120){
+                    keyupfun='';                   
+                }else if(testData[i]["testName"]==2){
+                    keyupfun='onkeyup=\'(($(this).val()).replace(/\,/g,"") < 4000 ) || (($(this).val()).replace(/\,/g,"") > 10000 ) ? this.style.color="red" : this.style.color="black"\'';                    
+                }else if(testData[i]["testName"]==122){
+                    keyupfun='onkeyup=\'(($(this).val()).replace(/\,/g,"") < 4000 ) || (($(this).val()).replace(/\,/g,"") > 10000 ) ? this.style.color="red" : this.style.color="black"\'';                    
+                }else if(testData[i]["testName"]==3){
+                    keyupfun='onkeyup=\'($(this).val() < 1.5 ) || ($(this).val() > 4.0 ) ? this.style.color="red" : this.style.color="black"\''; 
+                }else if(testData[i]["testName"]==123){
+                    keyupfun='onkeyup=\'($(this).val() < 1.5 ) || ($(this).val() > 4.0 ) ? this.style.color="red" : this.style.color="black"\''; 
+                }else if(testData[i]["testName"]==4){
+                    keyupfun='onkeyup=\'($(this).val() < 60 ) || ($(this).val() > 70 ) ? this.style.color="red" : this.style.color="black"\'';                     
+                }else if(testData[i]["testName"]==5){
+                    keyupfun='onkeyup=\'($(this).val() < 20 ) || ($(this).val() > 40 ) ? this.style.color="red" : this.style.color="black"\'';                     
+                    
+                }else if(testData[i]["testName"]==6){
+                    keyupfun='onkeyup=\'($(this).val() < 1 ) || ($(this).val() > 6 ) ? this.style.color="red" : this.style.color="black"\'';  
+                }else if(testData[i]["testName"]==7){
+                    keyupfun='onkeyup=\'($(this).val() < 1 ) || ($(this).val() > 6 ) ? this.style.color="red" : this.style.color="black"\'';                      
+                }else if(testData[i]["testName"]==8){
+                    keyupfun='onkeyup=\'($(this).val() < 0 ) || ($(this).val() > 2 ) ? this.style.color="red" : this.style.color="black"\'';                    
+                }else if(testData[i]["testName"]==9){
+                    keyupfun='onkeyup=\'($(this).val() < 4 ) || ($(this).val() > 5.5 ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==10){
+                    keyupfun='onkeyup=\'($(this).val() < 30 ) || ($(this).val() > 46 ) ? this.style.color="red" : this.style.color="black"\'';                    
+                }else if(testData[i]["testName"]==11){
+                    keyupfun='onkeyup=\'($(this).val() < 81 ) || ($(this).val() > 100 )? this.style.color="red" : this.style.color="black"\'';                    
+                }else if(testData[i]["testName"]==12){
+                    keyupfun='onkeyup=\'($(this).val() < 26 ) || ($(this).val() > 34 ) ? this.style.color="red" : this.style.color="black"\'';                    
+                    
+                }else if(testData[i]["testName"]==13){
+                    keyupfun='onkeyup=\'($(this).val() < 31 ) || ($(this).val() > 36 )? this.style.color="red" : this.style.color="black"\'';                    
+                    
+                }else if(testData[i]["testName"]==14){
+                    keyupfun='onkeyup=\'($(this).val() < 2 ) || ($(this).val() > 8 )? this.style.color="red" : this.style.color="black"\'';                    
+                    
+                }else if(testData[i]["testName"]==15){
+                    keyupfun='';
+                }else if(testData[i]["testName"]==16){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="black" : this.style.color="red"\'';
+                }else if(testData[i]["testName"]==17){
+                    keyupfun='onkeyup=\'($(this).val() < 1 ) || ($(this).val() > 4 ) ? this.style.color="red" : this.style.color="black"\'';                                        
+                }else if(testData[i]["testName"]==18){
+                    keyupfun='onkeyup=\'($(this).val() < 3 ) || ($(this).val() > 7 )? this.style.color="red" : this.style.color="black"\'';                                        
+                    
+                }
+                
+            // microbiology
+
+                else if(testData[i]["testName"]==19){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==20){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==21){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==22){
+                    keyupfun='onchange=\'($(this).val() == "Reactive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==110){
+                    keyupfun='onchange=\'($(this).val() == "Reactive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==23){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==24){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';     
+                }else if(testData[i]["testName"]==25){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==62){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==63){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==109){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==111){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==112){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==113){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==114){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==115){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==116){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==117){
+                    keyupfun='onchange=\'($(this).val() == "Positive" ) ? this.style.color="red" : this.style.color="black"\'';
+                }else if(testData[i]["testName"]==118){
+                    keyupfun='onchange=\'($(this).val() == "1:20" ) || ($(this).val() == "1:40" ) ? this.style.color="black" : this.style.color="red"\'';
+                }else if(testData[i]["testName"]==119){
+                    keyupfun='onchange=\'($(this).val() == "1:20" ) || ($(this).val() == "1:40" ) ? this.style.color="black" : this.style.color="red"\'';
+                }
+
+                // Bio chemistry
+
+                else if(testData[i]["testName"]==26){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 140 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==27){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 110 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==28){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 180 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==29){
+                    keyupfun='onkeyup=\'($(this).val() < 15 ) || ($(this).val() > 40 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==30){
+                    keyupfun='onkeyup=\'($(this).val() < 0.6 ) || ($(this).val() > 1.4 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==31){
+                    keyupfun='onkeyup=\'($(this).val() < 0.2 ) || ($(this).val() > 1 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==32){
+                    keyupfun='onkeyup=\'($(this).val() < 1 ) || ($(this).val() > 1.4 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==33){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 0.6 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==34){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 6 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==35){
+                    keyupfun='onkeyup=\'($(this).val() < 10 ) || ($(this).val() > 13 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==36){
+                    keyupfun='onkeyup=\'($(this).val() < 25 ) || ($(this).val() > 36 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==37){
+                    keyupfun='onkeyup=\'($(this).val() < 2.4 ) || ($(this).val() > 6.0 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==38){
+                    keyupfun='onkeyup=\'($(this).val() < 136 ) || ($(this).val() > 146 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==39){
+                    keyupfun='onkeyup=\'($(this).val() < 3.5 ) || ($(this).val() > 4.5 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==40){
+                    keyupfun='onkeyup=\'($(this).val() < 96 ) || ($(this).val() > 106 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==41){
+                    keyupfun='onkeyup=\'($(this).val() < 8.5 ) || ($(this).val() > 11 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==42){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 110 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==43){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 140 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==44){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 140 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==45){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 180 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==46){
+                    keyupfun='onkeyup=\'($(this).val() < 70 ) || ($(this).val() > 160 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==47){
+                    keyupfun='onkeyup=\'($(this).val() < 15 ) || ($(this).val() > 40 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==48){
+                    keyupfun='onkeyup=\'($(this).val() < 0.6 ) || ($(this).val() > 1.4 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==49){
+                    keyupfun='onkeyup=\'($(this).val() < 0.2 ) || ($(this).val() > 1 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==50){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 0.4 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==51){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 0.6 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==52){
+                    keyupfun='onkeyup=\'($(this).val() < 15 ) || ($(this).val() > 37 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==53){
+                    keyupfun='onkeyup=\'($(this).val() < 15 ) || ($(this).val() > 37 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==54){
+                    keyupfun='onkeyup=\'($(this).val() < 50 ) || ($(this).val() > 136 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==55){
+                    keyupfun='onkeyup=\'($(this).val() < 6.4 ) || ($(this).val() > 8.2 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==56){
+                    keyupfun='onkeyup=\'($(this).val() < 3.5 ) || ($(this).val() > 5 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==57){
+                    keyupfun='onkeyup=\'($(this).val() < 1.8 ) || ($(this).val() > 3.6 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==58){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 200 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==59){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 150 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==60){
+                    keyupfun='onkeyup=\'($(this).val() < 40 ) || ($(this).val() > 60 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==61){
+                    keyupfun='onkeyup=\'($(this).val() < 0.1 ) || ($(this).val() > 100 )? this.style.color="red" : this.style.color="black"\'';
+                }
+                else if(testData[i]["testName"]==97){
+                    keyupfun='onkeyup=\'($(this).val() < 15 ) || ($(this).val() > 40 )? this.style.color="red" : this.style.color="black"\'';
+                }
+
+                // outside tests 
+
+                else if(testData[i]["testName"]==64){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==65){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==66){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==67){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==68){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==69){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==70){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==71){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==72){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==73){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==74){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==75){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==76){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==77){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==78){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==79){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==80){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==81){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==82){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==83){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==84){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==85){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==86){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==87){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==88){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==89){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==90){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==91){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==92){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==93){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==94){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==95){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==96){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==99){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==106){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==107){
+                    keyupfun='';
+                }
+                else if(testData[i]["testName"]==108 || testData[i]["testName"]==125 || testData[i]["testName"]==127 || testData[i]["testName"]==128 || testData[i]["testName"]==129 || testData[i]["testName"]==130 || testData[i]["testName"]==131 || testData[i]["testName"]==132 || testData[i]["testName"]==133 || testData[i]["testName"]==134 || testData[i]["testName"]==135){
+                    keyupfun='';
+                }
+
+                var selectOptTests=["16","19","21","20","23","24","25","62","63",'109','111','112','113','114','115','116','117'];
+                var diffSelectOptTest=["22",'110'];
+                var diffexcluded=['15','98','99','106','107','108','118','119','120','126','124'];
+                var inputfieldTest=[];
+
+                if(selectOptTests.indexOf(testData[i]["testName"])== -1 && diffSelectOptTest.indexOf(testData[i]["testName"])== -1 && diffexcluded.indexOf(testData[i]["testName"])==-1 ){
+                    var values=testData[i]["testResult"]==null || testData[i]["testResult"]=='' ? '' : testData[i]["testResult"];
+                    var field='<input type="text" class="form-control" style="color:'+testData[i]["testResultColor"]+'" value="'+values+'" '+keyupfun+' id="result_'+i+'" data-id="'+testData[i]["testPrimId"]+'">';
+                }else if(testData[i]["testName"]==15){
+
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;" id="result_'+i+'"><option></option><option>"A"</option><option>"B"</option><option>"AB"</option><option>"O"</option></select>';
+
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='"A"'){
+                        field+='<option selected>"A"</option>';
+                    }else{
+                        field+='<option>"A"</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='"B"'){
+                        field+='<option selected>"B"</option>';
+                    }else{
+                        field+='<option>"B"</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='"AB"'){
+                        field+='<option selected>"AB"</option>';
+                    }else{
+                        field+='<option>"AB"</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='"O"'){
+                        field+='<option selected>"O"</option>';
+                    }else{
+                        field+='<option>"O"</option>';
+                    }
+
+                    field+='</select>';  
+
+                }else if(testData[i]["testName"]==98){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;" id="result_'+i+'"><option></option><option>75</option><option>100</option></select>';
+
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='75'){
+                        field+='<option selected>75</option>';
+                    }else{
+                        field+='<option>75</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='100'){
+                        field+='<option selected>100</option>';
+                    }else{
+                        field+='<option>100</option>';
+                    }
+
+                    field+='</select>';  
+
+
+                }else if(testData[i]["testName"]==99){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>.</option><option>Trace</option><option>Nil</option><option>+</option><option>++</option><option>+++</option><option>++++</option></select>';
+
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='.'){
+                        field+='<option selected>.</option>';
+                    }else{
+                        field+='<option>.</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Trace'){
+                        field+='<option selected>Trace</option>';
+                    }else{
+                        field+='<option>Trace</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Nil'){
+                        field+='<option selected>Nil</option>';
+                    }else{
+                        field+='<option>Nil</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='+'){
+                        field+='<option selected>+</option>';
+                    }else{
+                        field+='<option>+</option>';
+                    }
+                    if(testData[i]["testResult"]=='++'){
+                        field+='<option selected>++</option>';
+                    }else{
+                        field+='<option>++</option>';
+                    }
+                    if(testData[i]["testResult"]=='+++'){
+                        field+='<option selected>+++</option>';
+                    }else{
+                        field+='<option>+++</option>';
+                    }
+                    if(testData[i]["testResult"]=='++++'){
+                        field+='<option selected>++++</option>';
+                    }else{
+                        field+='<option>++++</option>';
+                    }
+
+                    field+='</select>';  
+
+                }else if(testData[i]["testName"]==106){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>.</option><option>Trace</option><option>Nil</option><option>+</option><option>++</option><option>+++</option><option>++++</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='.'){
+                        field+='<option selected>.</option>';
+                    }else{
+                        field+='<option>.</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Trace'){
+                        field+='<option selected>Trace</option>';
+                    }else{
+                        field+='<option>Trace</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Nil'){
+                        field+='<option selected>Nil</option>';
+                    }else{
+                        field+='<option>Nil</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='+'){
+                        field+='<option selected>+</option>';
+                    }else{
+                        field+='<option>+</option>';
+                    }
+                    if(testData[i]["testResult"]=='++'){
+                        field+='<option selected>++</option>';
+                    }else{
+                        field+='<option>++</option>';
+                    }
+                    if(testData[i]["testResult"]=='+++'){
+                        field+='<option selected>+++</option>';
+                    }else{
+                        field+='<option>+++</option>';
+                    }
+                    if(testData[i]["testResult"]=='++++'){
+                        field+='<option selected>++++</option>';
+                    }else{
+                        field+='<option>++++</option>';
+                    }
+
+                    field+='</select>'; 
+
+
+
+
+                }else if(testData[i]["testName"]==107){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>.</option><option>Nil</option><option>Present</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='.'){
+                        field+='<option selected>.</option>';
+                    }else{
+                        field+='<option>.</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Nil'){
+                        field+='<option selected>Nil</option>';
+                    }else{
+                        field+='<option>Nil</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Present'){
+                        field+='<option selected>Present</option>';
+                    }else{
+                        field+='<option>Present</option>';
+                    }
+                    field+='</select>'; 
+
+
+                }
+
+                // else if(testData[i]["testName"]==108){
+                //     var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>.</option><option>Nil</option><option>Present</option></select>';
+                // }
+
+                else if(testData[i]["testName"]==108){
+                var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='.'){
+                        field+='<option selected>.</option>';
+                    }else{
+                        field+='<option>.</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Nil'){
+                        field+='<option selected>Nil</option>';
+                    }else{
+                        field+='<option>Nil</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Present'){
+                        field+='<option selected>Present</option>';
+                    }else{
+                        field+='<option>Present</option>';
+                    }
+                    field+='</select>';                    
+                }
+
+                else if(testData[i]["testName"]==118){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>1:20</option><option>1:40</option><option>1:80</option><option>1:160</option><option>1:320</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='1:20'){
+                        field+='<option selected>1:20</option>';
+                    }else{
+                        field+='<option>1:20</option>';
+                    }
+
+                    
+                    if(testData[i]["testResult"]=='1:40'){
+                        field+='<option selected>1:40</option>';
+                    }else{
+                        field+='<option>1:40</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='1:160'){
+                        field+='<option selected>1:160</option>';
+                    }else{
+                        field+='<option>1:160</option>';
+                    }
+                    if(testData[i]["testResult"]=='1:320'){
+                        field+='<option selected>1:320</option>';
+                    }else{
+                        field+='<option>1:320</option>';
+                    }
+                    field+='</select>'; 
+
+                }else if(testData[i]["testName"]==119){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>1:20</option><option>1:40</option><option>1:80</option><option>1:160</option><option>1:320</option></select>';
+
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='1:20'){
+                        field+='<option selected>1:20</option>';
+                    }else{
+                        field+='<option>1:20</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='1:40'){
+                        field+='<option selected>1:40</option>';
+                    }else{
+                        field+='<option>1:40</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='1:160'){
+                        field+='<option selected>1:160</option>';
+                    }else{
+                        field+='<option>1:160</option>';
+                    }
+                    if(testData[i]["testResult"]=='1:320'){
+                        field+='<option selected>1:320</option>';
+                    }else{
+                        field+='<option>1:320</option>';
+                    }
+                    field+='</select>'; 
+
+
+                }else if(testData[i]["testName"]==120){
+                    var field='';
+                }else if(testData[i]["testName"]==124){
+                    var field='';
+                }else if(testData[i]["testName"]==126){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option></option><option>Alkaline</option><option>Acidic</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Alkaline'){
+                        field+='<option selected>Alkaline</option>';
+                    }else{
+                        field+='<option>Alkaline</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Acidic'){
+                        field+='<option selected>Acidic</option>';
+                    }else{
+                        field+='<option>Acidic</option>';
+                    }
+
+                    field+='</select>'; 
+
+                }else if(selectOptTests.indexOf(testData[i]["testName"])!= -1){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option> </option><option>Positive</option><option>Negative</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Positive'){
+                        field+='<option selected>Positive</option>';
+                    }else{
+                        field+='<option>Positive</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Negative'){
+                        field+='<option selected>Negative</option>';
+                    }else{
+                        field+='<option>Negative</option>';
+                    }
+
+                    field+='</select>'; 
+
+                }else if(diffSelectOptTest.indexOf(testData[i]["testName"])!= -1){
+                    // var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'"><option> </option><option>Non  Reactive</option><option>Reactive</option></select>';
+
+                    var field='<select class="form-control" '+keyupfun+' name="doctor" style="text-align-last: center !important;color:'+testData[i]["testResultColor"]+'" id="result_'+i+'">';                  
+                    if(testData[i]["testResult"]==''){
+                        field+='<option selected></option>';
+                    }else{
+                        field+='<option></option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Reactive'){
+                        field+='<option selected>Reactive</option>';
+                    }else{
+                        field+='<option>Reactive</option>';
+                    }
+
+                    if(testData[i]["testResult"]=='Non Reactive'){
+                        field+='<option selected>Non Reactive</option>';
+                    }else{
+                        field+='<option>Non Reactive</option>';
+                    }
+
+                    field+='</select>'; 
+                }
+
+                // if(testDatas[testData[i]["testName"]]['testname'].search('')){
+                //     field=''+field;
+                // }
+
+                
+                var sideHeads={};
+
+                var mainHeads={}
+
+                mainHeads[42]='Biochemistry';
+                mainHeads[47]='Biochemistry';
+                mainHeads[49]='Biochemistry';
+                mainHeads[58]='Biochemistry';
+                mainHeads[109]='Biochemistry';
+                mainHeads[99]='Biochemistry';
+                mainHeads[107]='Biochemistry';
+                mainHeads[110]='Biochemistry';
+                mainHeads[26]='Biochemistry';
+                mainHeads[27]='Biochemistry';
+                mainHeads[28]='Biochemistry';
+                mainHeads[29]='Biochemistry';
+                mainHeads[30]='Biochemistry';
+                mainHeads[31]='Biochemistry';
+                mainHeads[34]='Biochemistry';
+                mainHeads[37]='Biochemistry';
+                mainHeads[38]='Biochemistry';
+                mainHeads[41]='Biochemistry';
+
+                sideHeads[42]='GTT Profile';
+                sideHeads[47]='Renal Profile';
+                sideHeads[49]='Liver Profile';
+                sideHeads[58]='LIPID Profile';
+                sideHeads[109]='Urine';
+                sideHeads[99]='Urine';
+                sideHeads[107]='Urine';
+                sideHeads[110]='Urine';
+                
+                // sideHeads[26]='Biochemistry';
+                // sideHeads[27]='Biochemistry';
+                // sideHeads[28]='Biochemistry';
+                // sideHeads[29]='Biochemistry';
+                // sideHeads[30]='Biochemistry';
+                // sideHeads[31]='Biochemistry';
+                // sideHeads[34]='Biochemistry';
+                // sideHeads[37]='Biochemistry';
+                // sideHeads[38]='Biochemistry';
+                // sideHeads[41]='Biochemistry';
+                
+                mainHeads[19]='Microbiology';
+                mainHeads[20]='Microbiology';
+                mainHeads[21]='Microbiology';
+                mainHeads[22]='Microbiology';
+                mainHeads[23]='Microbiology';
+                mainHeads[24]='Microbiology';
+                mainHeads[25]='Microbiology';
+                mainHeads[62]='Microbiology';
+                mainHeads[63]='Microbiology';
+                mainHeads[116]='Microbiology';
+                mainHeads[117]='Microbiology';
+
+
+                sideHeads[19]='Serology';
+                sideHeads[20]='Serology';
+                sideHeads[21]='Serology';
+                sideHeads[22]='Serology';
+                sideHeads[23]='Serology';
+                sideHeads[24]='Serology';
+                sideHeads[25]='Serology';
+                sideHeads[62]='Serology';
+                sideHeads[63]='Serology';
+                sideHeads[116]='Serology';
+                sideHeads[117]='Serology';
+
+
+
+
+                mainHeads[124]='Haemotology';
+                mainHeads[121]='Haemotology';
+                mainHeads[122]='Haemotology';
+                mainHeads[123]='Haemotology';
+                mainHeads[14]='Haemotology';
+                mainHeads[15]='Haemotology';
+                mainHeads[17]='Haemotology';
+                mainHeads[1]='Haemotology';
+                mainHeads[2]='Haemotology';
+                mainHeads[3]='Haemotology';
+
+                sideHeads[124]='Semen Analysis';
+
+                // sideHeads[121]='Haemotology';
+                // sideHeads[122]='Haemotology';
+                // sideHeads[123]='Haemotology';
+                // sideHeads[14]='Haemotology';
+                // sideHeads[15]='Haemotology';
+                // sideHeads[17]='Haemotology';
+                sideHeads[121]='Complete blood picture';
+                sideHeads[122]='Complete blood picture';
+                sideHeads[123]='Complete blood picture';
+            
+
+                // if(sideHeads[testData[i]["testName"]]=='Haemotology'){
+                //     if(testSideCheck!='Haemotology'){
+                //         if(testSideCheck!=mainHeads[testData[i]["testName"]]){   
+                //         var newhead='<div class="col-lg-12 mb-2 '+mainHeads[testData[i]["testName"]]+'" ><b style="color:red;"><u>'+mainHeads[testData[i]["testName"]]+'</u></b></div>'; 
+                //         }else{
+                //             if(sideHeads[testData[i]["testName"]]!='' && sideHeads[testData[i]["testName"]]!=undefined ){
+                //             var newDiv='<div class="col-lg-12 mb-2 '+sideHeads[testData[i]["testName"]]+'" ><b style="color:red;"><u>'+sideHeads[testData[i]["testName"]]+'</u></b></div>';
+                //             }
+                //     }
+                //     var newDiv='<div class="col-lg-12 mb-2 cbp"><b style="color:red;"><u>Complete blood picture</u></b></div><div class="col-lg-12 mb-2 '+sideHeads[testData[i]["testName"]]+'"><b style="color:red;"><u>'+sideHeads[testData[i]["testName"]]+'</u></b></div>';
+                //     testSideCheck='Haemotology';
+                //     }
+                //     else{
+                //         var newDiv='';
+                //     }
+                // }
+
+                 if(mainHeads[testData[i]["testName"]]!='' && mainHeads[testData[i]["testName"]]!=undefined){                    
+                    if(testSideCheck!=mainHeads[testData[i]["testName"]]){                                                
+                        var newhead='<div class="col-lg-12 mb-2 '+mainHeads[testData[i]["testName"]]+'" ><b style="color:red;"><u style="font-size: 25px;letter-spacing: 0.2px;">'+mainHeads[testData[i]["testName"]]+'</u></b></div>';        
+                        if(sideHeads[testData[i]["testName"]]!='' && sideHeads[testData[i]["testName"]]!=undefined ){
+
+                            
+                            var newDiv=newhead+'<div class="col-lg-12 mb-2 '+sideHeads[testData[i]["testName"]]+'" ><b style="color:red;"><u>'+sideHeads[testData[i]["testName"]]+'</u></b></div>';
+
+
+                            testCheck=sideHeads[testData[i]["testName"]];
+                        }else{
+                            var newDiv=newhead;
+                        }
+                    testSideCheck=mainHeads[testData[i]["testName"]];
+                    }else{                                                               
+                            if(sideHeads[testData[i]["testName"]]!='' && sideHeads[testData[i]["testName"]]!=undefined ){
+                                if(testCheck!=sideHeads[testData[i]["testName"]]){                                        
+                                    var newDiv='<div class="col-lg-12 mb-2 '+sideHeads[testData[i]["testName"]]+'" ><b style="color:red;"><u>'+sideHeads[testData[i]["testName"]]+'</u></b></div>';
+                                    testCheck=sideHeads[testData[i]["testName"]];
+                                 }else{
+                                    var newDiv='';
+                                 }
+                            }else{
+                                var newDiv='';
+                            }
+                            
+                    }
+                }
+                else{
+                    var newDiv='';
+                }
+
+                $('#patientTests').append(newDiv+'<div class="col-lg-3 mb-2">'+testDatas[testData[i]["testName"]]['testname']+'</div><div class="col-lg-3 mb-2">'+field+'</div><div class="col-lg-3 mb-2">'+testDatas[testData[i]["testName"]]['units']+'</div><div class="col-lg-3 mb-2">'+testDatas[testData[i]["testName"]]['normal']+'</div>');
+            } 
+            
+            // $('.Haemotology').hide();
+            // $('.Haemotology:eq(0)').show();
+
+            // $('.serology').hide();
+            // $('.serology:eq(0)').show();
+
+            // $('.Biochemistry').hide();
+            // $('.Biochemistry:eq(0)').show();
+
+            // $('.cbp').hide();
+            // $('.cbp:eq(0)').show();
+
+            // $('.Serology').hide();
+            // $('.Serology:eq(0)').show();
+
+        }
+    })
+}
+var testPrints='';
+
+var doctorName='';
+function SinglePatient(){
+        var patientName=  $("#patientName").html().trim();
+        var age=  $("#patientAge").html().trim();
+        // var phoneNumber=  $("#patientMobile").html().trim();
+        var address=  $("#patientAddress").html().trim();
+        var gender=  $("#patientGender").html().trim();
+        var date=  $("#treatDate").html().trim();
+        doctorName=''
+
+
+        var testsDatas=JSON.parse($('#hiddenTestsData').val());
+        var count=0;
+        var primId=[];
+        var results=[];        
+        var colors=[];        
+        var newpDiv='';
+        var checkDiv='';
+        var checksDiv='';
+        var skip=0;
+        testsDatas.map(function(tests){
+
+                testPrints+='<tr>';
+
+                    // var testName= tests["testName"];
+                    var testName= testDatas[tests["testName"]]['testname'];
+                    var units= testDatas[tests["testName"]]['units'];
+                    var normal= testDatas[tests["testName"]]['normal'];
+                    if(tests["docName"]=='' || tests["docName"]==null){
+                        // doctorName= tests["docName"];
+                    }else{
+                        doctorName= tests["docName"];
+                    }
+                    // doctorName= tests["docName"];
+                    var amount= tests["price"];
+                    var result=$('#result_'+count).val()=='' || $('#result_'+count).val()==undefined ? '' : $('#result_'+count).val(); 
+                    var color=$('#result_'+count).css('color')=='rgb(255, 0, 0)' ? 'red' : 'black';
+                    // if(primId='411'){
+                    //     console.log($('#result_'+count).css('color'));
+                    // }
+                    var textColor=$('#result_'+count).css('color'); 
+                    results.push(result);   
+                    colors.push(color);
+                    primId.push(tests["testPrimId"]);     
+                    var testsBreak=["4","1","2","3",'120','124'];
+
+                     if(testsBreak.indexOf(tests["testName"])!=-1){
+                        var resultdiv=''+result;
+                     }else{
+                        var resultdiv=result;
+                     }
+                                   
+
+                var bioDivs={};
+                bioDivs=['26','27','28','29','30','31','42','41','34','35','36','37','38','109','110','99'];
+
+                if(bioDivs.indexOf(tests["testName"])!=-1){
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){                        
+                        newpDiv='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                            checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }
+                }else{                
+                    newpDiv='';
+                    skip=0;
+                }
+
+                var haemDivs={};
+                haemDivs=['1','2','3','14','15','17'];
+
+            if(skip==0){
+                if(haemDivs.indexOf(tests["testName"])!=-1){                    
+                    if(checksDiv=='' || (checksDiv!='Haemotology' && checksDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>Haemotology</p></u></div></td></tr><tr>';
+                        checksDiv='Haemotology';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+                var cbpDivs={};
+                cbpDivs=['4','5','6','7','8','9','10','11','12','13','121','122','123'];
+
+            if(skip==0){
+                if(cbpDivs.indexOf(tests["testName"])!=-1){     
+                    newpDiv='';               
+                    if(checksDiv=='' || (checksDiv!='Haemotology' && checksDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>Haemotology</p></u></div></td></tr><tr>';
+                        checksDiv='Haemotology';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+
+                    if(checkDiv=='' || (checkDiv!='cbp' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Complete" style="text-align: center;"><u><p>Complete Blood Picture</p></u></div></td></tr><tr>';
+                    checkDiv='cbp';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+
+            var SeroDivs={};
+            SeroDivs=['19','20','21','22','23','24','25','62','63','116','117'];
+
+            if(skip==0){
+                if(SeroDivs.indexOf(tests["testName"])!=-1){                    
+                    newpDiv=''                        
+                    if(checksDiv=='' || (checksDiv!='Microbiology' && checksDiv!='') ){      
+                        newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>Microbiology</p></u></div></td></tr><tr>';
+                        checksDiv='Microbiology';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }
+                    
+                    if(checkDiv=='' || (checkDiv!='Serology' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Serology" style="text-align: center;"><u><p>Serology</p></u></div></td></tr><tr>';
+                    checkDiv='Serology';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+            
+            var SemenDivs={};
+            SemenDivs=['124'];
+
+            if(skip==0){
+                if(SemenDivs.indexOf(tests["testName"])!=-1){    
+                    
+                                                   
+                    if(checksDiv=='' || (checksDiv!='Haemotology' && checksDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>Haemotology</p></u></div></td></tr><tr>';
+                        checksDiv='Haemotology';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+
+                    if(checkDiv=='' || (checkDiv!='Semen Analysis' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Semen" style="text-align: center;"><u><p>Semen Analysis</p></u></div></td></tr><tr>';
+                    checkDiv='Semen Analysis';
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+            var gttDivs={};
+            gttDivs=['42'];                
+                if(skip==0){
+                if(gttDivs.indexOf(tests["testName"])!=-1){   
+                    newpdiv=''
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){                                    
+                        newpdiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="GTT" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                        checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }
+                                    
+                    
+                    if(checkDiv=='' || (checkDiv!='GTT Profile' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="GTT" style="text-align: center;"><u><p>GTT Profile</p></u></div></td></tr><tr>';
+                    checkDiv='GTT Profile';                    
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+                var Renaldivs={};
+                Renaldivs=['47'];
+
+                if(skip==0){
+                if(Renaldivs.indexOf(tests["testName"])!=-1){    
+                    newpDiv=''                        
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){      
+                        newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                        checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }                       
+
+                    if(checkDiv=='' || (checkDiv!='Renal Profile' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Renal" style="text-align: center;"><u><p>Renal Profile</p></u></div></td></tr><tr>';
+                    checkDiv='Renal Profile';                    
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }                    
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+                var liverdivs={};
+                liverdivs=['49'];
+
+                if(skip==0){
+                if(liverdivs.indexOf(tests["testName"])!=-1){     
+                    newpDiv=''
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){                                    
+                        newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                        checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }
+
+                    if(checkDiv=='' || (checkDiv!='Liver Profile' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Liver" style="text-align: center;"><u><p>Liver Profile</p></u></div></td></tr><tr>';
+                    checkDiv='Liver Profile';                    
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }
+
+            var LIPIDdivs={};
+            LIPIDdivs=['58'];
+                if(skip==0){
+                if(LIPIDdivs.indexOf(tests["testName"])!=-1){    
+                    newpDiv=''
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){                                    
+                        newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                        checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }
+
+                    if(checkDiv=='' || (checkDiv!='LIPID Profile'  && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="LIPID" style="text-align: center;"><u><p>LIPID Profile</p></u></div></td></tr><tr>';
+                    checkDiv='LIPID Profile';                    
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }        
+                 var UrineDivs={};                
+                UrineDivs=['109','99','107','110'];                
+            if(skip==0){                
+                if(UrineDivs.indexOf(tests["testName"])!=-1){                           
+                    newpDiv=''                    
+                    if(checksDiv=='' || (checksDiv!='Biochemistry' && checksDiv!='') ){                                    
+                        newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" style="text-align: center;"><u style="font-size: 25px;letter-spacing: 0.2px;"><p>BIOCHEMISTRY</p></u></div></td></tr><tr>';
+                        checksDiv='Biochemistry';
+                        skip=1;
+                    }else{
+                        newpDiv='';
+                        skip=0;
+                    }       
+                    if(checkDiv=='' || (checkDiv!='Urine' && checkDiv!='') ){                        
+                    newpDiv+='<td colspan="4" style="background: #fff;line-height: 0;color:red;"><div id="my_box" class="Urine" style="text-align: center;"><u><p>Urine</p></u></div></td></tr><tr>';
+                    checkDiv='Urine';                    
+                    skip=1;
+                    }else{                    
+                    newpDiv='';
+                    skip=0;
+                    }
+                }else{                    
+                    newpDiv='';
+                    skip=0;
+                }
+            }                                
+
+                // var checkHTML='<b style="color:red;" class="serology">';                
+                // if(testPrints.search(checkHTML)!=-1){
+                //     testName=testName.replace('<b style="color:red;" class="serology">', '<b style="color:red;display:none" class="serology">');                
+                // }
+
+                // var checkHTML='<b style="color:red;" class="cbp"><u>';                
+                // if(testPrints.search(checkHTML)!=-1){
+                //     testName=testName.replace('<b style="color:red;" class="cbp"><u>', '<b style="color:red;display:none" class="cbp"><u>');                
+                // }
+
+                testPrints+=newpDiv+'<td style="background-color: #fff;text-align:left;">'+testName+'</td><td style="background-color: #fff;text-align:right;color:'+textColor+'">'+resultdiv+'</td><td style="background-color: #fff;text-align:left;">'+units+'</td><td style="background-color: #fff;text-align:right;">'+normal+'</td>';
+
+                testPrints+='</tr>';
+                count++;
+        })    
+
+        var details={results,primId,colors};
+
+        $.ajax({
+            type:'post',
+            url:'https://geekytechops.000webhostapp.com/connection.php',
+            data:{formName:'patient_result',details},
+            success:function(data){
+                $('#patient_details').hide();
+                $('#reports-table').show(); 
+
+            var a = window.open('', '_top', '','');            
+            a.document.write('<!DOCTYPE html PUBLIC \'-//W3C//DTD XHTML 1.0 Transitional//EN\' \'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\'><html xmlns=\'http://www.w3.org/1999/xhtml\'><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv=\'Content-Type\' content=\'text/html; charset=iso-8859-1\' /><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><title>Patient Feed</title><style>@page { margin-top: 120px;margin-bottom: 120px; } .GTT u{color:green !important;}.Renal u{color:rgb(0, 108, 122) !important;}.Liver u{color:rgb(0, 66, 165) !important;}.LIPID u{color:rgb(191, 204, 3) !important;}.Urine u{color:rgb(177, 0, 0) !important;}.Serology u{color:rgb(177, 0, 0) !important;}table p{ margin:10px;font-size:17px; }.Complete u{color:rgb(177, 0, 0) !important;}.Semen u{color:green !important;} th{background-color:#999999;-webkit-print-color-adjust: exact; }u{ text-transform: uppercase;font-size: 18px;letter-spacing: -0.9px;font-weight: 700;text-decoration: unset;color: #27434b;}.tiles-div{display: flex;align-items: baseline;}.tile1{width: 70%;padding-left: 3rem}.tile2{width: 30%;padding-left: 4rem; }.main-tile{display: flex;flex-direction: row;align-items:center;border: 1.5px solid;line-height: 0.2;width: 100%;}* { font-family: \'Roboto\', sans-serif; }</style></head><body><table width="900" border="0" align="center" cellpadding="0" cellspacing="0" style="padding:20px;"><tr><td style="background-color: #fff;text-align:right;">&nbsp;</td></tr><tr><td style="background-color: #fff;text-align:right;"><table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><div class="main-tile"><div class="tile1"><div class="tiles-div"><strong>Name &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</strong><p>'+patientName+'</p></div><div class="tiles-div"><strong>Address :&nbsp;</strong><p style="line-height:1;text-align:left;width:74%">'+address+'</p></div><div class="tiles-div"><strong>Ref Dr. &nbsp;&nbsp;: &nbsp;</strong><p>'+doctorName+'</p></div></div><div class="tile2"><div class="tiles-div"><strong>Age &nbsp;&nbsp;:&nbsp;&nbsp; </strong><p>'+age+'</p></div><div class="tiles-div"><strong>Sex &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;</strong><p>'+gender+'</p></div><div class="tiles-div"><strong>Date &nbsp;:&nbsp;&nbsp; </strong><p>'+date+'</p></div></div></div>  </tr></table><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#666666" bgcolor="#888888"><tr><th width="30%" align="left" bgcolor="#FFF" style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Test</th><th width="20%" align="right" bgcolor="#FFF" style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Result</th><th width="20%" align="left" bgcolor="#FFF" style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Units</th><th width="30%" align="right" bgcolor="#FFF" style="background-color:#fff;color: red;text-decoration: underline;text-decoration-color: red;font-family:Arial, Helvetica, sans-serif;font-size:16px;">Normal</th> </tr>'+testPrints+'</table></tr></td></table></body></html>');
+            // myWindow.opener.document.getElementById("demo").innerHTML = "HELLO!";
+            a.document.close();
+            a.print();
+
+            }
+        })
+        }        
+	</script>
+            <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+
+                    <!-- Required datatable js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>            
+
+        <script src="assets/js/app.js"></script>			
+        <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <script src="assets/js/board.js"></script>
+    </body>
+</html>

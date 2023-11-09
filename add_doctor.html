@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Add Product - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        
+				<!-- Bootstrap Css -->
+				<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css" />
+				<!-- Icons Css -->
+				<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+				<!-- App Css-->
+				<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="assets/css/nav-styles.css">
+                <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+				<script src="assets/js/jquery.min.js"></script>
+    </head>
+
+    <body data-sidebar="colored">
+    
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            	 
+		<div class="vertical-menu">
+            <button type="button" class="menu-swipe btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+                <i class="ri-menu-2-line align-middle"></i>
+            </button>
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <div class="components-nav">
+                        <li class="menu-title">MENUS</li>
+                        <li class="forms-nav">
+                            <a href="reports.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="index.html" class="waves-effect">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Add Bill</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="bills.html" class="waves-effect active">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <span>Bills</span>
+                            </a>
+                        </li>
+                        <li class="forms-nav">
+                            <a href="add_doctor.html" class="waves-effect active">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span>Add Doctors</span>
+                            </a>
+                        </li>
+                        <!-- <li class="forms-nav">
+                            <a href="add_test.html" class="waves-effect">
+                                <i class="fa-solid fa-vial-circle-check"></i>
+                                <span>Add Tests</span>
+                            </a>
+                        </li> -->
+                    </div>
+                    </ul>                    
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid" id="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">						
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Add Doctors</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="needs-validation" id="formid" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Doctor Name</label>
+                                                        <input type="text" class="form-control docName" id="docName" placeholder="Doctors Name" value="" >
+                                                        <div class="invalid-feedback" id="docNameError">
+                                                        Please Enter the Name
+                                                        </div>
+                                                    </div>
+                                                </div>      
+                                            </div>   
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <div class="col-md-12" id="success_msg" style="display:none;color: green;font-size: 17px;text-align: center;font-weight: 600;">Submission Successfull</div>                                    
+                                                        <button class="btn btn-primary w-5" type="button" onclick="adproduct()">Submit</button>
+                                                    </div>
+                                                </div>  
+                                            </div>          
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>                                            
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <script>
+	function adproduct(){
+	
+		var docName = $(".docName").val().trim();
+		var formName="add_doctor";
+		
+		if(docName==''){
+			if(docName==''){
+				$('.docName').addClass('field-invalid');
+				$('.docName').removeClass('field-valid');
+				$('#docNameError').attr('style','display:flex; color: #ff0000; margin-top: 5px;');
+				$(".docNameError").attr('style','display: flex;align-items: center;');
+			}else{
+				$('.docName').removeClass('field-invalid');
+				$('.docName').addClass('field-valid');
+				$('#docNameError').hide();
+				$(".docNameError").attr('style','');
+			}
+			return false;
+		}else{
+			$.ajax({
+                // url:"http://spikey.byethost7.com/connection.php",
+                // url:"https://spikey.6te.net/connection.php",
+                // url:"https://close-profile.000webhostapp.com/connection.php",
+                // url:"https://sartorial-police.000webhostapp.com/connection.php",
+                url:"https://geekytechops.000webhostapp.com/connection.php",
+                // url:"include/connection.php",
+				type:"POST",
+				data:{docName:docName,formName:formName},
+				success: function(response) {
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'New Test added Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    $( "#container-fluid" ).load(window.location.href + " #container-fluid" );
+				}
+			})
+		}
+	}
+	</script>
+    	        <!-- JAVASCRIPT -->
+			<script src="assets/libs/jquery/jquery.min.js"></script>
+			<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+			<script src="assets/js/app.js"></script>
+            <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+			<script src="assets/js/board.js"></script>
+    </body>
+</html>
